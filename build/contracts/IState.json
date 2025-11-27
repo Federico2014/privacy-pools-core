@@ -1,0 +1,3169 @@
+{
+  "contractName": "IState",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "MaxTreeDepthReached",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotYetRagequitteable",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NullifierAlreadySpent",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OnlyEntrypoint",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PoolIsDead",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ZeroAddress",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_leaf",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_root",
+          "type": "uint256"
+        }
+      ],
+      "name": "LeafInserted",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "ASSET",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "_asset",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ENTRYPOINT",
+      "outputs": [
+        {
+          "internalType": "contract IEntrypoint",
+          "name": "_entrypoint",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "MAX_TREE_DEPTH",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "_maxDepth",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "RAGEQUIT_VERIFIER",
+      "outputs": [
+        {
+          "internalType": "contract IVerifier",
+          "name": "_verifier",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ROOT_HISTORY_SIZE",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "_size",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "SCOPE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_scope",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "WITHDRAWAL_VERIFIER",
+      "outputs": [
+        {
+          "internalType": "contract IVerifier",
+          "name": "_verifier",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentRoot",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_root",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentRootIndex",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "_index",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentTreeDepth",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_depth",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentTreeSize",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_size",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "dead",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "_dead",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_label",
+          "type": "uint256"
+        }
+      ],
+      "name": "depositors",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "nonce",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_nonce",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_nullifierHash",
+          "type": "uint256"
+        }
+      ],
+      "name": "nullifierHashes",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "_spent",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "roots",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_root",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: Apache-2.0\npragma solidity ^0.8.20;\n\nimport {IEntrypoint} from \"./IEntrypoint.sol\";\n\nimport {IVerifier} from \"./IVerifier.sol\";\n\n/**\n * @title IState\n * @notice Interface for the State contract\n */\ninterface IState {\n    /*///////////////////////////////////////////////////////////////\n                              EVENTS\n  //////////////////////////////////////////////////////////////*/\n\n    /**\n     * @notice Emitted when inserting a leaf into the Merkle Tree\n     * @param _index The index of the leaf in the tree\n     * @param _leaf The leaf value\n     * @param _root The updated root\n     */\n    event LeafInserted(uint256 _index, uint256 _leaf, uint256 _root);\n\n    /*///////////////////////////////////////////////////////////////\n                              ERRORS\n  //////////////////////////////////////////////////////////////*/\n\n    /**\n     * @notice Thrown when trying to call a method only available to the Entrypoint\n     */\n    error OnlyEntrypoint();\n\n    /**\n     * @notice Thrown when trying to deposit into a dead pool\n     */\n    error PoolIsDead();\n\n    /**\n     * @notice Thrown when trying to spend a nullifier that has already been spent\n     */\n    error NullifierAlreadySpent();\n\n    /**\n     * @notice Thrown when trying to initiate the ragequitting process of a commitment before the waiting period\n     */\n    error NotYetRagequitteable();\n\n    /**\n     * @notice Thrown when the max tree depth is reached and no more commitments can be inserted\n     */\n    error MaxTreeDepthReached();\n\n    /**\n     * @notice Thrown when trying to set a state variable as address zero\n     */\n    error ZeroAddress();\n\n    /*///////////////////////////////////////////////////////////////\n                              VIEWS \n  //////////////////////////////////////////////////////////////*/\n\n    /**\n     * @notice Returns the pool unique identifier\n     * @return _scope The scope id\n     */\n    function SCOPE() external view returns (uint256 _scope);\n\n    /**\n     * @notice Returns the pool asset\n     * @return _asset The asset address\n     */\n    function ASSET() external view returns (address _asset);\n\n    /**\n     * @notice Returns the root history size for root caching\n     * @return _size The amount of valid roots to store\n     */\n    function ROOT_HISTORY_SIZE() external view returns (uint32 _size);\n\n    /**\n     * @notice Returns the maximum depth of the state tree\n     * @dev Merkle tree depth must be capped at a fixed maximum because zero-knowledge circuits\n     * compile to R1CS (Rank-1 Constraint System) constraints that must be determined at compile time.\n     * R1CS cannot handle dynamic loops or recursion - all computation paths must be fully \"unrolled\"\n     * into a fixed number of constraints. Since each level of the Merkle tree requires its own set\n     * of constraints for hashing and path verification, we need to set a maximum depth that determines\n     * the total constraint size of the circuit.\n     * @return _maxDepth The max depth\n     */\n    function MAX_TREE_DEPTH() external view returns (uint32 _maxDepth);\n\n    /**\n     * @notice Returns the configured Entrypoint contract\n     * @return _entrypoint The Entrypoint contract\n     */\n    function ENTRYPOINT() external view returns (IEntrypoint _entrypoint);\n\n    /**\n     * @notice Returns the configured Verifier contract for withdrawals\n     * @return _verifier The Verifier contract\n     */\n    function WITHDRAWAL_VERIFIER() external view returns (IVerifier _verifier);\n\n    /**\n     * @notice Returns the configured Verifier contract for ragequits\n     * @return _verifier The Verifier contract\n     */\n    function RAGEQUIT_VERIFIER() external view returns (IVerifier _verifier);\n\n    /**\n     * @notice Returns the current root index\n     * @return _index The current index\n     */\n    function currentRootIndex() external view returns (uint32 _index);\n\n    /**\n     * @notice Returns the current state root\n     * @return _root The current state root\n     */\n    function currentRoot() external view returns (uint256 _root);\n\n    /**\n     * @notice Returns the current state tree depth\n     * @return _depth The current state tree depth\n     */\n    function currentTreeDepth() external view returns (uint256 _depth);\n\n    /**\n     * @notice Returns the current state tree size\n     * @return _size The current state tree size\n     */\n    function currentTreeSize() external view returns (uint256 _size);\n\n    /**\n     * @notice Returns the current label nonce\n     * @return _nonce The current nonce\n     */\n    function nonce() external view returns (uint256 _nonce);\n\n    /**\n     * @notice Returns the boolean indicating if the pool is dead\n     * @return _dead The dead boolean\n     */\n    function dead() external view returns (bool _dead);\n\n    /**\n     * @notice Returns the root stored at an index\n     * @param _index The root index\n     * @return _root The root value\n     */\n    function roots(uint256 _index) external view returns (uint256 _root);\n\n    /**\n     * @notice Returns the spending status of a nullifier hash\n     * @param _nullifierHash The nullifier hash\n     * @return _spent The boolean indicating if it is spent\n     */\n    function nullifierHashes(\n        uint256 _nullifierHash\n    ) external view returns (bool _spent);\n\n    /**\n     * @notice Returns the original depositor that generated a label\n     * @param _label The label\n     * @return _depositor The original depositor\n     */\n    function depositors(\n        uint256 _label\n    ) external view returns (address _depositor);\n}\n",
+  "sourcePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IState.sol",
+  "ast": {
+    "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IState.sol",
+    "exportedSymbols": {
+      "IEntrypoint": [
+        2924
+      ],
+      "IState": [
+        3201
+      ],
+      "IVerifier": [
+        3253
+      ]
+    },
+    "id": 3202,
+    "license": "Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3063,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:12"
+      },
+      {
+        "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IEntrypoint.sol",
+        "file": "./IEntrypoint.sol",
+        "id": 3065,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3202,
+        "sourceUnit": 2925,
+        "src": "65:46:12",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 3064,
+              "name": "IEntrypoint",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 2924,
+              "src": "73:11:12",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IVerifier.sol",
+        "file": "./IVerifier.sol",
+        "id": 3067,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3202,
+        "sourceUnit": 3254,
+        "src": "113:42:12",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 3066,
+              "name": "IVerifier",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 3253,
+              "src": "121:9:12",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IState",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 3068,
+          "nodeType": "StructuredDocumentation",
+          "src": "157:68:12",
+          "text": " @title IState\n @notice Interface for the State contract"
+        },
+        "fullyImplemented": false,
+        "id": 3201,
+        "linearizedBaseContracts": [
+          3201
+        ],
+        "name": "IState",
+        "nameLocation": "236:6:12",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 3069,
+              "nodeType": "StructuredDocumentation",
+              "src": "424:204:12",
+              "text": " @notice Emitted when inserting a leaf into the Merkle Tree\n @param _index The index of the leaf in the tree\n @param _leaf The leaf value\n @param _root The updated root"
+            },
+            "eventSelector": "cb249c8292372bd11f567786635483fca9e635030baafca55ff1a8940141d221",
+            "id": 3077,
+            "name": "LeafInserted",
+            "nameLocation": "639:12:12",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3076,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3071,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_index",
+                  "nameLocation": "660:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3077,
+                  "src": "652:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3070,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "652:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3073,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_leaf",
+                  "nameLocation": "676:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3077,
+                  "src": "668:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3072,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "668:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3075,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_root",
+                  "nameLocation": "691:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3077,
+                  "src": "683:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3074,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "683:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "651:46:12"
+            },
+            "src": "633:65:12"
+          },
+          {
+            "documentation": {
+              "id": 3078,
+              "nodeType": "StructuredDocumentation",
+              "src": "879:95:12",
+              "text": " @notice Thrown when trying to call a method only available to the Entrypoint"
+            },
+            "errorSelector": "8247bd80",
+            "id": 3080,
+            "name": "OnlyEntrypoint",
+            "nameLocation": "985:14:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3079,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "999:2:12"
+            },
+            "src": "979:23:12"
+          },
+          {
+            "documentation": {
+              "id": 3081,
+              "nodeType": "StructuredDocumentation",
+              "src": "1008:73:12",
+              "text": " @notice Thrown when trying to deposit into a dead pool"
+            },
+            "errorSelector": "924b3727",
+            "id": 3083,
+            "name": "PoolIsDead",
+            "nameLocation": "1092:10:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3082,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1102:2:12"
+            },
+            "src": "1086:19:12"
+          },
+          {
+            "documentation": {
+              "id": 3084,
+              "nodeType": "StructuredDocumentation",
+              "src": "1111:94:12",
+              "text": " @notice Thrown when trying to spend a nullifier that has already been spent"
+            },
+            "errorSelector": "b115d857",
+            "id": 3086,
+            "name": "NullifierAlreadySpent",
+            "nameLocation": "1216:21:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3085,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1237:2:12"
+            },
+            "src": "1210:30:12"
+          },
+          {
+            "documentation": {
+              "id": 3087,
+              "nodeType": "StructuredDocumentation",
+              "src": "1246:124:12",
+              "text": " @notice Thrown when trying to initiate the ragequitting process of a commitment before the waiting period"
+            },
+            "errorSelector": "7099f16b",
+            "id": 3089,
+            "name": "NotYetRagequitteable",
+            "nameLocation": "1381:20:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3088,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1401:2:12"
+            },
+            "src": "1375:29:12"
+          },
+          {
+            "documentation": {
+              "id": 3090,
+              "nodeType": "StructuredDocumentation",
+              "src": "1410:108:12",
+              "text": " @notice Thrown when the max tree depth is reached and no more commitments can be inserted"
+            },
+            "errorSelector": "221f4041",
+            "id": 3092,
+            "name": "MaxTreeDepthReached",
+            "nameLocation": "1529:19:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3091,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1548:2:12"
+            },
+            "src": "1523:28:12"
+          },
+          {
+            "documentation": {
+              "id": 3093,
+              "nodeType": "StructuredDocumentation",
+              "src": "1557:85:12",
+              "text": " @notice Thrown when trying to set a state variable as address zero"
+            },
+            "errorSelector": "d92e233d",
+            "id": 3095,
+            "name": "ZeroAddress",
+            "nameLocation": "1653:11:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3094,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1664:2:12"
+            },
+            "src": "1647:20:12"
+          },
+          {
+            "documentation": {
+              "id": 3096,
+              "nodeType": "StructuredDocumentation",
+              "src": "1848:96:12",
+              "text": " @notice Returns the pool unique identifier\n @return _scope The scope id"
+            },
+            "functionSelector": "33d09200",
+            "id": 3101,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "SCOPE",
+            "nameLocation": "1958:5:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3097,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1963:2:12"
+            },
+            "returnParameters": {
+              "id": 3100,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3099,
+                  "mutability": "mutable",
+                  "name": "_scope",
+                  "nameLocation": "1997:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3101,
+                  "src": "1989:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3098,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1989:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1988:16:12"
+            },
+            "scope": 3201,
+            "src": "1949:56:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3102,
+              "nodeType": "StructuredDocumentation",
+              "src": "2011:89:12",
+              "text": " @notice Returns the pool asset\n @return _asset The asset address"
+            },
+            "functionSelector": "4800d97f",
+            "id": 3107,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "ASSET",
+            "nameLocation": "2114:5:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3103,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2119:2:12"
+            },
+            "returnParameters": {
+              "id": 3106,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3105,
+                  "mutability": "mutable",
+                  "name": "_asset",
+                  "nameLocation": "2153:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3107,
+                  "src": "2145:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3104,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2145:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2144:16:12"
+            },
+            "scope": 3201,
+            "src": "2105:56:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3108,
+              "nodeType": "StructuredDocumentation",
+              "src": "2167:129:12",
+              "text": " @notice Returns the root history size for root caching\n @return _size The amount of valid roots to store"
+            },
+            "functionSelector": "cd87a3b4",
+            "id": 3113,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "ROOT_HISTORY_SIZE",
+            "nameLocation": "2310:17:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3109,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2327:2:12"
+            },
+            "returnParameters": {
+              "id": 3112,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3111,
+                  "mutability": "mutable",
+                  "name": "_size",
+                  "nameLocation": "2360:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3113,
+                  "src": "2353:12:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 3110,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2353:6:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2352:14:12"
+            },
+            "scope": 3201,
+            "src": "2301:66:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3114,
+              "nodeType": "StructuredDocumentation",
+              "src": "2373:663:12",
+              "text": " @notice Returns the maximum depth of the state tree\n @dev Merkle tree depth must be capped at a fixed maximum because zero-knowledge circuits\n compile to R1CS (Rank-1 Constraint System) constraints that must be determined at compile time.\n R1CS cannot handle dynamic loops or recursion - all computation paths must be fully \"unrolled\"\n into a fixed number of constraints. Since each level of the Merkle tree requires its own set\n of constraints for hashing and path verification, we need to set a maximum depth that determines\n the total constraint size of the circuit.\n @return _maxDepth The max depth"
+            },
+            "functionSelector": "e38df5f0",
+            "id": 3119,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "MAX_TREE_DEPTH",
+            "nameLocation": "3050:14:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3115,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3064:2:12"
+            },
+            "returnParameters": {
+              "id": 3118,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3117,
+                  "mutability": "mutable",
+                  "name": "_maxDepth",
+                  "nameLocation": "3097:9:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3119,
+                  "src": "3090:16:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 3116,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3090:6:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3089:18:12"
+            },
+            "scope": 3201,
+            "src": "3041:67:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3120,
+              "nodeType": "StructuredDocumentation",
+              "src": "3114:120:12",
+              "text": " @notice Returns the configured Entrypoint contract\n @return _entrypoint The Entrypoint contract"
+            },
+            "functionSelector": "e8eb3cc6",
+            "id": 3126,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "ENTRYPOINT",
+            "nameLocation": "3248:10:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3121,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3258:2:12"
+            },
+            "returnParameters": {
+              "id": 3125,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3124,
+                  "mutability": "mutable",
+                  "name": "_entrypoint",
+                  "nameLocation": "3296:11:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3126,
+                  "src": "3284:23:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IEntrypoint_$2924",
+                    "typeString": "contract IEntrypoint"
+                  },
+                  "typeName": {
+                    "id": 3123,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3122,
+                      "name": "IEntrypoint",
+                      "nameLocations": [
+                        "3284:11:12"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2924,
+                      "src": "3284:11:12"
+                    },
+                    "referencedDeclaration": 2924,
+                    "src": "3284:11:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IEntrypoint_$2924",
+                      "typeString": "contract IEntrypoint"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3283:25:12"
+            },
+            "scope": 3201,
+            "src": "3239:70:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3127,
+              "nodeType": "StructuredDocumentation",
+              "src": "3315:130:12",
+              "text": " @notice Returns the configured Verifier contract for withdrawals\n @return _verifier The Verifier contract"
+            },
+            "functionSelector": "8735eb2b",
+            "id": 3133,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "WITHDRAWAL_VERIFIER",
+            "nameLocation": "3459:19:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3128,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3478:2:12"
+            },
+            "returnParameters": {
+              "id": 3132,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3131,
+                  "mutability": "mutable",
+                  "name": "_verifier",
+                  "nameLocation": "3514:9:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3133,
+                  "src": "3504:19:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVerifier_$3253",
+                    "typeString": "contract IVerifier"
+                  },
+                  "typeName": {
+                    "id": 3130,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3129,
+                      "name": "IVerifier",
+                      "nameLocations": [
+                        "3504:9:12"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 3253,
+                      "src": "3504:9:12"
+                    },
+                    "referencedDeclaration": 3253,
+                    "src": "3504:9:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVerifier_$3253",
+                      "typeString": "contract IVerifier"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3503:21:12"
+            },
+            "scope": 3201,
+            "src": "3450:75:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3134,
+              "nodeType": "StructuredDocumentation",
+              "src": "3531:128:12",
+              "text": " @notice Returns the configured Verifier contract for ragequits\n @return _verifier The Verifier contract"
+            },
+            "functionSelector": "da662925",
+            "id": 3140,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "RAGEQUIT_VERIFIER",
+            "nameLocation": "3673:17:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3135,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3690:2:12"
+            },
+            "returnParameters": {
+              "id": 3139,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3138,
+                  "mutability": "mutable",
+                  "name": "_verifier",
+                  "nameLocation": "3726:9:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3140,
+                  "src": "3716:19:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVerifier_$3253",
+                    "typeString": "contract IVerifier"
+                  },
+                  "typeName": {
+                    "id": 3137,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3136,
+                      "name": "IVerifier",
+                      "nameLocations": [
+                        "3716:9:12"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 3253,
+                      "src": "3716:9:12"
+                    },
+                    "referencedDeclaration": 3253,
+                    "src": "3716:9:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVerifier_$3253",
+                      "typeString": "contract IVerifier"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3715:21:12"
+            },
+            "scope": 3201,
+            "src": "3664:73:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3141,
+              "nodeType": "StructuredDocumentation",
+              "src": "3743:97:12",
+              "text": " @notice Returns the current root index\n @return _index The current index"
+            },
+            "functionSelector": "90eeb02b",
+            "id": 3146,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "currentRootIndex",
+            "nameLocation": "3854:16:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3142,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3870:2:12"
+            },
+            "returnParameters": {
+              "id": 3145,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3144,
+                  "mutability": "mutable",
+                  "name": "_index",
+                  "nameLocation": "3903:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3146,
+                  "src": "3896:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 3143,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3896:6:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3895:15:12"
+            },
+            "scope": 3201,
+            "src": "3845:66:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3147,
+              "nodeType": "StructuredDocumentation",
+              "src": "3917:101:12",
+              "text": " @notice Returns the current state root\n @return _root The current state root"
+            },
+            "functionSelector": "fdab463d",
+            "id": 3152,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "currentRoot",
+            "nameLocation": "4032:11:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3148,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4043:2:12"
+            },
+            "returnParameters": {
+              "id": 3151,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3150,
+                  "mutability": "mutable",
+                  "name": "_root",
+                  "nameLocation": "4077:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3152,
+                  "src": "4069:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3149,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4069:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4068:15:12"
+            },
+            "scope": 3201,
+            "src": "4023:61:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3153,
+              "nodeType": "StructuredDocumentation",
+              "src": "4090:114:12",
+              "text": " @notice Returns the current state tree depth\n @return _depth The current state tree depth"
+            },
+            "functionSelector": "4a2b75c8",
+            "id": 3158,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "currentTreeDepth",
+            "nameLocation": "4218:16:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3154,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4234:2:12"
+            },
+            "returnParameters": {
+              "id": 3157,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3156,
+                  "mutability": "mutable",
+                  "name": "_depth",
+                  "nameLocation": "4268:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3158,
+                  "src": "4260:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3155,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4260:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4259:16:12"
+            },
+            "scope": 3201,
+            "src": "4209:67:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3159,
+              "nodeType": "StructuredDocumentation",
+              "src": "4282:111:12",
+              "text": " @notice Returns the current state tree size\n @return _size The current state tree size"
+            },
+            "functionSelector": "a8f0f95a",
+            "id": 3164,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "currentTreeSize",
+            "nameLocation": "4407:15:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3160,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4422:2:12"
+            },
+            "returnParameters": {
+              "id": 3163,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3162,
+                  "mutability": "mutable",
+                  "name": "_size",
+                  "nameLocation": "4456:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3164,
+                  "src": "4448:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3161,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4448:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4447:15:12"
+            },
+            "scope": 3201,
+            "src": "4398:65:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3165,
+              "nodeType": "StructuredDocumentation",
+              "src": "4469:98:12",
+              "text": " @notice Returns the current label nonce\n @return _nonce The current nonce"
+            },
+            "functionSelector": "affed0e0",
+            "id": 3170,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "nonce",
+            "nameLocation": "4581:5:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3166,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4586:2:12"
+            },
+            "returnParameters": {
+              "id": 3169,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3168,
+                  "mutability": "mutable",
+                  "name": "_nonce",
+                  "nameLocation": "4620:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3170,
+                  "src": "4612:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3167,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4612:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4611:16:12"
+            },
+            "scope": 3201,
+            "src": "4572:56:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3171,
+              "nodeType": "StructuredDocumentation",
+              "src": "4634:115:12",
+              "text": " @notice Returns the boolean indicating if the pool is dead\n @return _dead The dead boolean"
+            },
+            "functionSelector": "36cf7c87",
+            "id": 3176,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "dead",
+            "nameLocation": "4763:4:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3172,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4767:2:12"
+            },
+            "returnParameters": {
+              "id": 3175,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3174,
+                  "mutability": "mutable",
+                  "name": "_dead",
+                  "nameLocation": "4798:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3176,
+                  "src": "4793:10:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 3173,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4793:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4792:12:12"
+            },
+            "scope": 3201,
+            "src": "4754:51:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3177,
+              "nodeType": "StructuredDocumentation",
+              "src": "4811:134:12",
+              "text": " @notice Returns the root stored at an index\n @param _index The root index\n @return _root The root value"
+            },
+            "functionSelector": "c2b40ae4",
+            "id": 3184,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "roots",
+            "nameLocation": "4959:5:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3180,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3179,
+                  "mutability": "mutable",
+                  "name": "_index",
+                  "nameLocation": "4973:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3184,
+                  "src": "4965:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3178,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4965:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4964:16:12"
+            },
+            "returnParameters": {
+              "id": 3183,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3182,
+                  "mutability": "mutable",
+                  "name": "_root",
+                  "nameLocation": "5012:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3184,
+                  "src": "5004:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3181,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5004:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5003:15:12"
+            },
+            "scope": 3201,
+            "src": "4950:69:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3185,
+              "nodeType": "StructuredDocumentation",
+              "src": "5025:182:12",
+              "text": " @notice Returns the spending status of a nullifier hash\n @param _nullifierHash The nullifier hash\n @return _spent The boolean indicating if it is spent"
+            },
+            "functionSelector": "1f79a1e9",
+            "id": 3192,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "nullifierHashes",
+            "nameLocation": "5221:15:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3188,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3187,
+                  "mutability": "mutable",
+                  "name": "_nullifierHash",
+                  "nameLocation": "5254:14:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3192,
+                  "src": "5246:22:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3186,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5246:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5236:38:12"
+            },
+            "returnParameters": {
+              "id": 3191,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3190,
+                  "mutability": "mutable",
+                  "name": "_spent",
+                  "nameLocation": "5303:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3192,
+                  "src": "5298:11:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 3189,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5298:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5297:13:12"
+            },
+            "scope": 3201,
+            "src": "5212:99:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3193,
+              "nodeType": "StructuredDocumentation",
+              "src": "5317:160:12",
+              "text": " @notice Returns the original depositor that generated a label\n @param _label The label\n @return _depositor The original depositor"
+            },
+            "functionSelector": "e4b2fb79",
+            "id": 3200,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "depositors",
+            "nameLocation": "5491:10:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3196,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3195,
+                  "mutability": "mutable",
+                  "name": "_label",
+                  "nameLocation": "5519:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3200,
+                  "src": "5511:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3194,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5511:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5501:30:12"
+            },
+            "returnParameters": {
+              "id": 3199,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3198,
+                  "mutability": "mutable",
+                  "name": "_depositor",
+                  "nameLocation": "5563:10:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3200,
+                  "src": "5555:18:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3197,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5555:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5554:20:12"
+            },
+            "scope": 3201,
+            "src": "5482:93:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3202,
+        "src": "226:5351:12",
+        "usedErrors": [
+          3080,
+          3083,
+          3086,
+          3089,
+          3092,
+          3095
+        ],
+        "usedEvents": [
+          3077
+        ]
+      }
+    ],
+    "src": "39:5539:12"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IState.sol",
+    "exportedSymbols": {
+      "IEntrypoint": [
+        2924
+      ],
+      "IState": [
+        3201
+      ],
+      "IVerifier": [
+        3253
+      ]
+    },
+    "id": 3202,
+    "license": "Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3063,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:12"
+      },
+      {
+        "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IEntrypoint.sol",
+        "file": "./IEntrypoint.sol",
+        "id": 3065,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3202,
+        "sourceUnit": 2925,
+        "src": "65:46:12",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 3064,
+              "name": "IEntrypoint",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 2924,
+              "src": "73:11:12",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IVerifier.sol",
+        "file": "./IVerifier.sol",
+        "id": 3067,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3202,
+        "sourceUnit": 3254,
+        "src": "113:42:12",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 3066,
+              "name": "IVerifier",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 3253,
+              "src": "121:9:12",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IState",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 3068,
+          "nodeType": "StructuredDocumentation",
+          "src": "157:68:12",
+          "text": " @title IState\n @notice Interface for the State contract"
+        },
+        "fullyImplemented": false,
+        "id": 3201,
+        "linearizedBaseContracts": [
+          3201
+        ],
+        "name": "IState",
+        "nameLocation": "236:6:12",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 3069,
+              "nodeType": "StructuredDocumentation",
+              "src": "424:204:12",
+              "text": " @notice Emitted when inserting a leaf into the Merkle Tree\n @param _index The index of the leaf in the tree\n @param _leaf The leaf value\n @param _root The updated root"
+            },
+            "eventSelector": "cb249c8292372bd11f567786635483fca9e635030baafca55ff1a8940141d221",
+            "id": 3077,
+            "name": "LeafInserted",
+            "nameLocation": "639:12:12",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3076,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3071,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_index",
+                  "nameLocation": "660:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3077,
+                  "src": "652:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3070,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "652:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3073,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_leaf",
+                  "nameLocation": "676:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3077,
+                  "src": "668:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3072,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "668:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3075,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_root",
+                  "nameLocation": "691:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3077,
+                  "src": "683:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3074,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "683:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "651:46:12"
+            },
+            "src": "633:65:12"
+          },
+          {
+            "documentation": {
+              "id": 3078,
+              "nodeType": "StructuredDocumentation",
+              "src": "879:95:12",
+              "text": " @notice Thrown when trying to call a method only available to the Entrypoint"
+            },
+            "errorSelector": "8247bd80",
+            "id": 3080,
+            "name": "OnlyEntrypoint",
+            "nameLocation": "985:14:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3079,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "999:2:12"
+            },
+            "src": "979:23:12"
+          },
+          {
+            "documentation": {
+              "id": 3081,
+              "nodeType": "StructuredDocumentation",
+              "src": "1008:73:12",
+              "text": " @notice Thrown when trying to deposit into a dead pool"
+            },
+            "errorSelector": "924b3727",
+            "id": 3083,
+            "name": "PoolIsDead",
+            "nameLocation": "1092:10:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3082,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1102:2:12"
+            },
+            "src": "1086:19:12"
+          },
+          {
+            "documentation": {
+              "id": 3084,
+              "nodeType": "StructuredDocumentation",
+              "src": "1111:94:12",
+              "text": " @notice Thrown when trying to spend a nullifier that has already been spent"
+            },
+            "errorSelector": "b115d857",
+            "id": 3086,
+            "name": "NullifierAlreadySpent",
+            "nameLocation": "1216:21:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3085,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1237:2:12"
+            },
+            "src": "1210:30:12"
+          },
+          {
+            "documentation": {
+              "id": 3087,
+              "nodeType": "StructuredDocumentation",
+              "src": "1246:124:12",
+              "text": " @notice Thrown when trying to initiate the ragequitting process of a commitment before the waiting period"
+            },
+            "errorSelector": "7099f16b",
+            "id": 3089,
+            "name": "NotYetRagequitteable",
+            "nameLocation": "1381:20:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3088,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1401:2:12"
+            },
+            "src": "1375:29:12"
+          },
+          {
+            "documentation": {
+              "id": 3090,
+              "nodeType": "StructuredDocumentation",
+              "src": "1410:108:12",
+              "text": " @notice Thrown when the max tree depth is reached and no more commitments can be inserted"
+            },
+            "errorSelector": "221f4041",
+            "id": 3092,
+            "name": "MaxTreeDepthReached",
+            "nameLocation": "1529:19:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3091,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1548:2:12"
+            },
+            "src": "1523:28:12"
+          },
+          {
+            "documentation": {
+              "id": 3093,
+              "nodeType": "StructuredDocumentation",
+              "src": "1557:85:12",
+              "text": " @notice Thrown when trying to set a state variable as address zero"
+            },
+            "errorSelector": "d92e233d",
+            "id": 3095,
+            "name": "ZeroAddress",
+            "nameLocation": "1653:11:12",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3094,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1664:2:12"
+            },
+            "src": "1647:20:12"
+          },
+          {
+            "documentation": {
+              "id": 3096,
+              "nodeType": "StructuredDocumentation",
+              "src": "1848:96:12",
+              "text": " @notice Returns the pool unique identifier\n @return _scope The scope id"
+            },
+            "functionSelector": "33d09200",
+            "id": 3101,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "SCOPE",
+            "nameLocation": "1958:5:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3097,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1963:2:12"
+            },
+            "returnParameters": {
+              "id": 3100,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3099,
+                  "mutability": "mutable",
+                  "name": "_scope",
+                  "nameLocation": "1997:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3101,
+                  "src": "1989:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3098,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1989:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1988:16:12"
+            },
+            "scope": 3201,
+            "src": "1949:56:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3102,
+              "nodeType": "StructuredDocumentation",
+              "src": "2011:89:12",
+              "text": " @notice Returns the pool asset\n @return _asset The asset address"
+            },
+            "functionSelector": "4800d97f",
+            "id": 3107,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "ASSET",
+            "nameLocation": "2114:5:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3103,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2119:2:12"
+            },
+            "returnParameters": {
+              "id": 3106,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3105,
+                  "mutability": "mutable",
+                  "name": "_asset",
+                  "nameLocation": "2153:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3107,
+                  "src": "2145:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3104,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2145:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2144:16:12"
+            },
+            "scope": 3201,
+            "src": "2105:56:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3108,
+              "nodeType": "StructuredDocumentation",
+              "src": "2167:129:12",
+              "text": " @notice Returns the root history size for root caching\n @return _size The amount of valid roots to store"
+            },
+            "functionSelector": "cd87a3b4",
+            "id": 3113,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "ROOT_HISTORY_SIZE",
+            "nameLocation": "2310:17:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3109,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2327:2:12"
+            },
+            "returnParameters": {
+              "id": 3112,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3111,
+                  "mutability": "mutable",
+                  "name": "_size",
+                  "nameLocation": "2360:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3113,
+                  "src": "2353:12:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 3110,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2353:6:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2352:14:12"
+            },
+            "scope": 3201,
+            "src": "2301:66:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3114,
+              "nodeType": "StructuredDocumentation",
+              "src": "2373:663:12",
+              "text": " @notice Returns the maximum depth of the state tree\n @dev Merkle tree depth must be capped at a fixed maximum because zero-knowledge circuits\n compile to R1CS (Rank-1 Constraint System) constraints that must be determined at compile time.\n R1CS cannot handle dynamic loops or recursion - all computation paths must be fully \"unrolled\"\n into a fixed number of constraints. Since each level of the Merkle tree requires its own set\n of constraints for hashing and path verification, we need to set a maximum depth that determines\n the total constraint size of the circuit.\n @return _maxDepth The max depth"
+            },
+            "functionSelector": "e38df5f0",
+            "id": 3119,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "MAX_TREE_DEPTH",
+            "nameLocation": "3050:14:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3115,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3064:2:12"
+            },
+            "returnParameters": {
+              "id": 3118,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3117,
+                  "mutability": "mutable",
+                  "name": "_maxDepth",
+                  "nameLocation": "3097:9:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3119,
+                  "src": "3090:16:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 3116,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3090:6:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3089:18:12"
+            },
+            "scope": 3201,
+            "src": "3041:67:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3120,
+              "nodeType": "StructuredDocumentation",
+              "src": "3114:120:12",
+              "text": " @notice Returns the configured Entrypoint contract\n @return _entrypoint The Entrypoint contract"
+            },
+            "functionSelector": "e8eb3cc6",
+            "id": 3126,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "ENTRYPOINT",
+            "nameLocation": "3248:10:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3121,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3258:2:12"
+            },
+            "returnParameters": {
+              "id": 3125,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3124,
+                  "mutability": "mutable",
+                  "name": "_entrypoint",
+                  "nameLocation": "3296:11:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3126,
+                  "src": "3284:23:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IEntrypoint_$2924",
+                    "typeString": "contract IEntrypoint"
+                  },
+                  "typeName": {
+                    "id": 3123,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3122,
+                      "name": "IEntrypoint",
+                      "nameLocations": [
+                        "3284:11:12"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2924,
+                      "src": "3284:11:12"
+                    },
+                    "referencedDeclaration": 2924,
+                    "src": "3284:11:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IEntrypoint_$2924",
+                      "typeString": "contract IEntrypoint"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3283:25:12"
+            },
+            "scope": 3201,
+            "src": "3239:70:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3127,
+              "nodeType": "StructuredDocumentation",
+              "src": "3315:130:12",
+              "text": " @notice Returns the configured Verifier contract for withdrawals\n @return _verifier The Verifier contract"
+            },
+            "functionSelector": "8735eb2b",
+            "id": 3133,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "WITHDRAWAL_VERIFIER",
+            "nameLocation": "3459:19:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3128,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3478:2:12"
+            },
+            "returnParameters": {
+              "id": 3132,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3131,
+                  "mutability": "mutable",
+                  "name": "_verifier",
+                  "nameLocation": "3514:9:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3133,
+                  "src": "3504:19:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVerifier_$3253",
+                    "typeString": "contract IVerifier"
+                  },
+                  "typeName": {
+                    "id": 3130,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3129,
+                      "name": "IVerifier",
+                      "nameLocations": [
+                        "3504:9:12"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 3253,
+                      "src": "3504:9:12"
+                    },
+                    "referencedDeclaration": 3253,
+                    "src": "3504:9:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVerifier_$3253",
+                      "typeString": "contract IVerifier"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3503:21:12"
+            },
+            "scope": 3201,
+            "src": "3450:75:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3134,
+              "nodeType": "StructuredDocumentation",
+              "src": "3531:128:12",
+              "text": " @notice Returns the configured Verifier contract for ragequits\n @return _verifier The Verifier contract"
+            },
+            "functionSelector": "da662925",
+            "id": 3140,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "RAGEQUIT_VERIFIER",
+            "nameLocation": "3673:17:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3135,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3690:2:12"
+            },
+            "returnParameters": {
+              "id": 3139,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3138,
+                  "mutability": "mutable",
+                  "name": "_verifier",
+                  "nameLocation": "3726:9:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3140,
+                  "src": "3716:19:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVerifier_$3253",
+                    "typeString": "contract IVerifier"
+                  },
+                  "typeName": {
+                    "id": 3137,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3136,
+                      "name": "IVerifier",
+                      "nameLocations": [
+                        "3716:9:12"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 3253,
+                      "src": "3716:9:12"
+                    },
+                    "referencedDeclaration": 3253,
+                    "src": "3716:9:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVerifier_$3253",
+                      "typeString": "contract IVerifier"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3715:21:12"
+            },
+            "scope": 3201,
+            "src": "3664:73:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3141,
+              "nodeType": "StructuredDocumentation",
+              "src": "3743:97:12",
+              "text": " @notice Returns the current root index\n @return _index The current index"
+            },
+            "functionSelector": "90eeb02b",
+            "id": 3146,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "currentRootIndex",
+            "nameLocation": "3854:16:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3142,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3870:2:12"
+            },
+            "returnParameters": {
+              "id": 3145,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3144,
+                  "mutability": "mutable",
+                  "name": "_index",
+                  "nameLocation": "3903:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3146,
+                  "src": "3896:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 3143,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3896:6:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3895:15:12"
+            },
+            "scope": 3201,
+            "src": "3845:66:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3147,
+              "nodeType": "StructuredDocumentation",
+              "src": "3917:101:12",
+              "text": " @notice Returns the current state root\n @return _root The current state root"
+            },
+            "functionSelector": "fdab463d",
+            "id": 3152,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "currentRoot",
+            "nameLocation": "4032:11:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3148,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4043:2:12"
+            },
+            "returnParameters": {
+              "id": 3151,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3150,
+                  "mutability": "mutable",
+                  "name": "_root",
+                  "nameLocation": "4077:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3152,
+                  "src": "4069:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3149,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4069:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4068:15:12"
+            },
+            "scope": 3201,
+            "src": "4023:61:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3153,
+              "nodeType": "StructuredDocumentation",
+              "src": "4090:114:12",
+              "text": " @notice Returns the current state tree depth\n @return _depth The current state tree depth"
+            },
+            "functionSelector": "4a2b75c8",
+            "id": 3158,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "currentTreeDepth",
+            "nameLocation": "4218:16:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3154,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4234:2:12"
+            },
+            "returnParameters": {
+              "id": 3157,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3156,
+                  "mutability": "mutable",
+                  "name": "_depth",
+                  "nameLocation": "4268:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3158,
+                  "src": "4260:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3155,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4260:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4259:16:12"
+            },
+            "scope": 3201,
+            "src": "4209:67:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3159,
+              "nodeType": "StructuredDocumentation",
+              "src": "4282:111:12",
+              "text": " @notice Returns the current state tree size\n @return _size The current state tree size"
+            },
+            "functionSelector": "a8f0f95a",
+            "id": 3164,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "currentTreeSize",
+            "nameLocation": "4407:15:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3160,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4422:2:12"
+            },
+            "returnParameters": {
+              "id": 3163,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3162,
+                  "mutability": "mutable",
+                  "name": "_size",
+                  "nameLocation": "4456:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3164,
+                  "src": "4448:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3161,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4448:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4447:15:12"
+            },
+            "scope": 3201,
+            "src": "4398:65:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3165,
+              "nodeType": "StructuredDocumentation",
+              "src": "4469:98:12",
+              "text": " @notice Returns the current label nonce\n @return _nonce The current nonce"
+            },
+            "functionSelector": "affed0e0",
+            "id": 3170,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "nonce",
+            "nameLocation": "4581:5:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3166,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4586:2:12"
+            },
+            "returnParameters": {
+              "id": 3169,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3168,
+                  "mutability": "mutable",
+                  "name": "_nonce",
+                  "nameLocation": "4620:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3170,
+                  "src": "4612:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3167,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4612:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4611:16:12"
+            },
+            "scope": 3201,
+            "src": "4572:56:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3171,
+              "nodeType": "StructuredDocumentation",
+              "src": "4634:115:12",
+              "text": " @notice Returns the boolean indicating if the pool is dead\n @return _dead The dead boolean"
+            },
+            "functionSelector": "36cf7c87",
+            "id": 3176,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "dead",
+            "nameLocation": "4763:4:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3172,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4767:2:12"
+            },
+            "returnParameters": {
+              "id": 3175,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3174,
+                  "mutability": "mutable",
+                  "name": "_dead",
+                  "nameLocation": "4798:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3176,
+                  "src": "4793:10:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 3173,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4793:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4792:12:12"
+            },
+            "scope": 3201,
+            "src": "4754:51:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3177,
+              "nodeType": "StructuredDocumentation",
+              "src": "4811:134:12",
+              "text": " @notice Returns the root stored at an index\n @param _index The root index\n @return _root The root value"
+            },
+            "functionSelector": "c2b40ae4",
+            "id": 3184,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "roots",
+            "nameLocation": "4959:5:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3180,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3179,
+                  "mutability": "mutable",
+                  "name": "_index",
+                  "nameLocation": "4973:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3184,
+                  "src": "4965:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3178,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4965:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4964:16:12"
+            },
+            "returnParameters": {
+              "id": 3183,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3182,
+                  "mutability": "mutable",
+                  "name": "_root",
+                  "nameLocation": "5012:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3184,
+                  "src": "5004:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3181,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5004:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5003:15:12"
+            },
+            "scope": 3201,
+            "src": "4950:69:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3185,
+              "nodeType": "StructuredDocumentation",
+              "src": "5025:182:12",
+              "text": " @notice Returns the spending status of a nullifier hash\n @param _nullifierHash The nullifier hash\n @return _spent The boolean indicating if it is spent"
+            },
+            "functionSelector": "1f79a1e9",
+            "id": 3192,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "nullifierHashes",
+            "nameLocation": "5221:15:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3188,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3187,
+                  "mutability": "mutable",
+                  "name": "_nullifierHash",
+                  "nameLocation": "5254:14:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3192,
+                  "src": "5246:22:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3186,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5246:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5236:38:12"
+            },
+            "returnParameters": {
+              "id": 3191,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3190,
+                  "mutability": "mutable",
+                  "name": "_spent",
+                  "nameLocation": "5303:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3192,
+                  "src": "5298:11:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 3189,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5298:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5297:13:12"
+            },
+            "scope": 3201,
+            "src": "5212:99:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3193,
+              "nodeType": "StructuredDocumentation",
+              "src": "5317:160:12",
+              "text": " @notice Returns the original depositor that generated a label\n @param _label The label\n @return _depositor The original depositor"
+            },
+            "functionSelector": "e4b2fb79",
+            "id": 3200,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "depositors",
+            "nameLocation": "5491:10:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3196,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3195,
+                  "mutability": "mutable",
+                  "name": "_label",
+                  "nameLocation": "5519:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3200,
+                  "src": "5511:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3194,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5511:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5501:30:12"
+            },
+            "returnParameters": {
+              "id": 3199,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3198,
+                  "mutability": "mutable",
+                  "name": "_depositor",
+                  "nameLocation": "5563:10:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3200,
+                  "src": "5555:18:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3197,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5555:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5554:20:12"
+            },
+            "scope": 3201,
+            "src": "5482:93:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3202,
+        "src": "226:5351:12",
+        "usedErrors": [
+          3080,
+          3083,
+          3086,
+          3089,
+          3092,
+          3095
+        ],
+        "usedEvents": [
+          3077
+        ]
+      }
+    ],
+    "src": "39:5539:12"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.22+commit.5ed3e10f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2025-11-27T12:44:34.042Z"
+}

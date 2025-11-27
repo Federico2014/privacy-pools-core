@@ -1,0 +1,3495 @@
+{
+  "contractName": "IPrivacyPool",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "ContextMismatch",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "IncorrectASPRoot",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidCommitment",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidDepositValue",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidProcessooor",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidProof",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidTreeDepth",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "MaxTreeDepthReached",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotYetRagequitteable",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NullifierAlreadySpent",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OnlyEntrypoint",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OnlyOriginalDepositor",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PoolIsDead",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ScopeMismatch",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "UnknownStateRoot",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ZeroAddress",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_commitment",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_label",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_precommitmentHash",
+          "type": "uint256"
+        }
+      ],
+      "name": "Deposited",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_leaf",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_root",
+          "type": "uint256"
+        }
+      ],
+      "name": "LeafInserted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "PoolDied",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_ragequitter",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_commitment",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_label",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Ragequit",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_processooor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_spentNullifier",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newCommitment",
+          "type": "uint256"
+        }
+      ],
+      "name": "Withdrawn",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "ASSET",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "_asset",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ENTRYPOINT",
+      "outputs": [
+        {
+          "internalType": "contract IEntrypoint",
+          "name": "_entrypoint",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "MAX_TREE_DEPTH",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "_maxDepth",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "RAGEQUIT_VERIFIER",
+      "outputs": [
+        {
+          "internalType": "contract IVerifier",
+          "name": "_verifier",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ROOT_HISTORY_SIZE",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "_size",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "SCOPE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_scope",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "WITHDRAWAL_VERIFIER",
+      "outputs": [
+        {
+          "internalType": "contract IVerifier",
+          "name": "_verifier",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentRoot",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_root",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentRootIndex",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "_index",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentTreeDepth",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_depth",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentTreeSize",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_size",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "dead",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "_dead",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_precommitment",
+          "type": "uint256"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_commitment",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_label",
+          "type": "uint256"
+        }
+      ],
+      "name": "depositors",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "nonce",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_nonce",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_nullifierHash",
+          "type": "uint256"
+        }
+      ],
+      "name": "nullifierHashes",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "_spent",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256[2]",
+              "name": "pA",
+              "type": "uint256[2]"
+            },
+            {
+              "internalType": "uint256[2][2]",
+              "name": "pB",
+              "type": "uint256[2][2]"
+            },
+            {
+              "internalType": "uint256[2]",
+              "name": "pC",
+              "type": "uint256[2]"
+            },
+            {
+              "internalType": "uint256[4]",
+              "name": "pubSignals",
+              "type": "uint256[4]"
+            }
+          ],
+          "internalType": "struct ProofLib.RagequitProof",
+          "name": "_p",
+          "type": "tuple"
+        }
+      ],
+      "name": "ragequit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "roots",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_root",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "windDown",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "processooor",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct IPrivacyPool.Withdrawal",
+          "name": "_w",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256[2]",
+              "name": "pA",
+              "type": "uint256[2]"
+            },
+            {
+              "internalType": "uint256[2][2]",
+              "name": "pB",
+              "type": "uint256[2][2]"
+            },
+            {
+              "internalType": "uint256[2]",
+              "name": "pC",
+              "type": "uint256[2]"
+            },
+            {
+              "internalType": "uint256[8]",
+              "name": "pubSignals",
+              "type": "uint256[8]"
+            }
+          ],
+          "internalType": "struct ProofLib.WithdrawProof",
+          "name": "_p",
+          "type": "tuple"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: Apache-2.0\npragma solidity ^0.8.20;\n\nimport {ProofLib} from \"../contracts/lib/ProofLib.sol\";\nimport {IState} from \"./IState.sol\";\n\n/**\n * @title IPrivacyPool\n * @notice Interface for the PrivacyPool contract\n */\ninterface IPrivacyPool is IState {\n    /*///////////////////////////////////////////////////////////////\n                              STRUCTS\n  //////////////////////////////////////////////////////////////*/\n\n    /**\n     * @notice Struct for the withdrawal request\n     * @dev The integrity of this data is ensured by the `context` signal in the proof\n     * @param processooor The allowed address to process the withdrawal\n     * @param data Encoded arbitrary data used by the Entrypoint\n     */\n    struct Withdrawal {\n        address processooor;\n        bytes data;\n    }\n\n    /*///////////////////////////////////////////////////////////////\n                              EVENTS\n  //////////////////////////////////////////////////////////////*/\n\n    /**\n     * @notice Emitted when making a user deposit\n     * @param _depositor The address of the depositor\n     * @param _commitment The commitment hash\n     * @param _label The deposit generated label\n     * @param _value The deposited amount\n     * @param _precommitmentHash The deposit precommitment hash\n     */\n    event Deposited(\n        address indexed _depositor,\n        uint256 _commitment,\n        uint256 _label,\n        uint256 _value,\n        uint256 _precommitmentHash\n    );\n\n    /**\n     * @notice Emitted when processing a withdrawal\n     * @param _processooor The address which processed the withdrawal\n     * @param _value The withdrawn amount\n     * @param _spentNullifier The spent nullifier\n     * @param _newCommitment The new commitment hash\n     */\n    event Withdrawn(\n        address indexed _processooor,\n        uint256 _value,\n        uint256 _spentNullifier,\n        uint256 _newCommitment\n    );\n\n    /**\n     * @notice Emitted when ragequitting a commitment\n     * @param _ragequitter The address who ragequit\n     * @param _commitment The ragequit commitment\n     * @param _label The commitment label\n     * @param _value The ragequit amount\n     */\n    event Ragequit(\n        address indexed _ragequitter,\n        uint256 _commitment,\n        uint256 _label,\n        uint256 _value\n    );\n\n    /**\n     * @notice Emitted irreversibly suspending deposits\n     */\n    event PoolDied();\n\n    /*///////////////////////////////////////////////////////////////\n                              ERRORS\n  //////////////////////////////////////////////////////////////*/\n\n    /**\n     * @notice Thrown when failing to verify a withdrawal proof through the Groth16 verifier\n     */\n    error InvalidProof();\n\n    /**\n     * @notice Thrown when trying to spend a commitment that does not exist in the state\n     */\n    error InvalidCommitment();\n\n    /**\n     * @notice Thrown when calling `withdraw` while not being the allowed processooor\n     */\n    error InvalidProcessooor();\n\n    /**\n     * @notice Thrown when calling `withdraw` with a ASP or state tree depth greater or equal than the max tree depth\n     */\n    error InvalidTreeDepth();\n\n    /**\n     * @notice Thrown when trying to deposit an amount higher than 2**128\n     */\n    error InvalidDepositValue();\n\n    /**\n     * @notice Thrown when providing an invalid scope for this pool\n     */\n    error ScopeMismatch();\n\n    /**\n     * @notice Thrown when providing an invalid context for the pool and withdrawal\n     */\n    error ContextMismatch();\n\n    /**\n     * @notice Thrown when providing an unknown or outdated state root\n     */\n    error UnknownStateRoot();\n\n    /**\n     * @notice Thrown when providing an unknown or outdated ASP root\n     */\n    error IncorrectASPRoot();\n\n    /**\n     * @notice Thrown when trying to ragequit while not being the original depositor\n     */\n    error OnlyOriginalDepositor();\n\n    /*///////////////////////////////////////////////////////////////\n                              LOGIC\n  //////////////////////////////////////////////////////////////*/\n\n    /**\n     * @notice Deposit funds into the Privacy Pool\n     * @dev Only callable by the Entrypoint\n     * @param _depositor The depositor address\n     * @param _value The value being deposited\n     * @param _precommitment The precommitment hash\n     * @return _commitment The commitment hash\n     */\n    function deposit(\n        address _depositor,\n        uint256 _value,\n        uint256 _precommitment\n    ) external payable returns (uint256 _commitment);\n\n    /**\n     * @notice Privately withdraw funds by spending an existing commitment\n     * @param _w The `Withdrawal` struct\n     * @param _p The `WithdrawProof` struct\n     */\n    function withdraw(\n        Withdrawal memory _w,\n        ProofLib.WithdrawProof memory _p\n    ) external;\n\n    /**\n     * @notice Publicly withdraw funds to original depositor without exposing secrets\n     * @dev Only callable by the original depositor\n     * @param _p the `RagequitProof` struct\n     */\n    function ragequit(ProofLib.RagequitProof memory _p) external;\n\n    /**\n     * @notice Irreversibly suspends deposits\n     * @dev Withdrawals can never be disabled\n     * @dev Only callable by the Entrypoint\n     */\n    function windDown() external;\n}\n\n/**\n * @title IPrivacyPoolSimple\n * @notice Interface for the PrivacyPool native asset implementation\n */\ninterface IPrivacyPoolSimple is IPrivacyPool {\n    /*///////////////////////////////////////////////////////////////\n                              ERRORS\n  //////////////////////////////////////////////////////////////*/\n\n    /**\n     * @notice Thrown when sending less amount of native asset than required\n     */\n    error InsufficientValue();\n\n    /**\n     * @notice Thrown when failing to send native asset to an account\n     */\n    error FailedToSendNativeAsset();\n}\n\n/**\n * @title IPrivacyPoolComplex\n * @notice Interface for the PrivacyPool ERC20 implementation\n */\ninterface IPrivacyPoolComplex is IPrivacyPool {\n    /*///////////////////////////////////////////////////////////////\n                              ERRORS\n  //////////////////////////////////////////////////////////////*/\n\n    /**\n     * @notice Thrown when sending sending any amount of native asset\n     */\n    error NativeAssetNotAccepted();\n\n    /**\n     * @notice Thrown when trying to set up a complex pool with the native asset\n     */\n    error NativeAssetNotSupported();\n}\n",
+  "sourcePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IPrivacyPool.sol",
+  "ast": {
+    "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IPrivacyPool.sol",
+    "exportedSymbols": {
+      "IPrivacyPool": [
+        3041
+      ],
+      "IPrivacyPoolComplex": [
+        3061
+      ],
+      "IPrivacyPoolSimple": [
+        3051
+      ],
+      "IState": [
+        3201
+      ],
+      "ProofLib": [
+        2331
+      ]
+    },
+    "id": 3062,
+    "license": "Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2926,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:11"
+      },
+      {
+        "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/contracts/lib/ProofLib.sol",
+        "file": "../contracts/lib/ProofLib.sol",
+        "id": 2928,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3062,
+        "sourceUnit": 2332,
+        "src": "65:55:11",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 2927,
+              "name": "ProofLib",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 2331,
+              "src": "73:8:11",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IState.sol",
+        "file": "./IState.sol",
+        "id": 2930,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3062,
+        "sourceUnit": 3202,
+        "src": "121:36:11",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 2929,
+              "name": "IState",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 3201,
+              "src": "129:6:11",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 2932,
+              "name": "IState",
+              "nameLocations": [
+                "266:6:11"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 3201,
+              "src": "266:6:11"
+            },
+            "id": 2933,
+            "nodeType": "InheritanceSpecifier",
+            "src": "266:6:11"
+          }
+        ],
+        "canonicalName": "IPrivacyPool",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 2931,
+          "nodeType": "StructuredDocumentation",
+          "src": "159:80:11",
+          "text": " @title IPrivacyPool\n @notice Interface for the PrivacyPool contract"
+        },
+        "fullyImplemented": false,
+        "id": 3041,
+        "linearizedBaseContracts": [
+          3041,
+          3201
+        ],
+        "name": "IPrivacyPool",
+        "nameLocation": "250:12:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IPrivacyPool.Withdrawal",
+            "documentation": {
+              "id": 2934,
+              "nodeType": "StructuredDocumentation",
+              "src": "455:284:11",
+              "text": " @notice Struct for the withdrawal request\n @dev The integrity of this data is ensured by the `context` signal in the proof\n @param processooor The allowed address to process the withdrawal\n @param data Encoded arbitrary data used by the Entrypoint"
+            },
+            "id": 2939,
+            "members": [
+              {
+                "constant": false,
+                "id": 2936,
+                "mutability": "mutable",
+                "name": "processooor",
+                "nameLocation": "780:11:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 2939,
+                "src": "772:19:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 2935,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "772:7:11",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2938,
+                "mutability": "mutable",
+                "name": "data",
+                "nameLocation": "807:4:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 2939,
+                "src": "801:10:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 2937,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "801:5:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Withdrawal",
+            "nameLocation": "751:10:11",
+            "nodeType": "StructDefinition",
+            "scope": 3041,
+            "src": "744:74:11",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2940,
+              "nodeType": "StructuredDocumentation",
+              "src": "999:316:11",
+              "text": " @notice Emitted when making a user deposit\n @param _depositor The address of the depositor\n @param _commitment The commitment hash\n @param _label The deposit generated label\n @param _value The deposited amount\n @param _precommitmentHash The deposit precommitment hash"
+            },
+            "eventSelector": "e3b53cd1a44fbf11535e145d80b8ef1ed6d57a73bf5daa7e939b6b01657d6549",
+            "id": 2952,
+            "name": "Deposited",
+            "nameLocation": "1326:9:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2951,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2942,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_depositor",
+                  "nameLocation": "1361:10:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2952,
+                  "src": "1345:26:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2941,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1345:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2944,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_commitment",
+                  "nameLocation": "1389:11:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2952,
+                  "src": "1381:19:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2943,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1381:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2946,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_label",
+                  "nameLocation": "1418:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2952,
+                  "src": "1410:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2945,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1410:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2948,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "1442:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2952,
+                  "src": "1434:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2947,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1434:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2950,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_precommitmentHash",
+                  "nameLocation": "1466:18:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2952,
+                  "src": "1458:26:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2949,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1458:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1335:155:11"
+            },
+            "src": "1320:171:11"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2953,
+              "nodeType": "StructuredDocumentation",
+              "src": "1497:278:11",
+              "text": " @notice Emitted when processing a withdrawal\n @param _processooor The address which processed the withdrawal\n @param _value The withdrawn amount\n @param _spentNullifier The spent nullifier\n @param _newCommitment The new commitment hash"
+            },
+            "eventSelector": "75e161b3e824b114fc1a33274bd7091918dd4e639cede50b78b15a4eea956a21",
+            "id": 2963,
+            "name": "Withdrawn",
+            "nameLocation": "1786:9:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2962,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2955,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_processooor",
+                  "nameLocation": "1821:12:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2963,
+                  "src": "1805:28:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2954,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1805:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2957,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "1851:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2963,
+                  "src": "1843:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2956,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1843:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2959,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_spentNullifier",
+                  "nameLocation": "1875:15:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2963,
+                  "src": "1867:23:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2958,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1867:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2961,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_newCommitment",
+                  "nameLocation": "1908:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2963,
+                  "src": "1900:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2960,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1900:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1795:133:11"
+            },
+            "src": "1780:149:11"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2964,
+              "nodeType": "StructuredDocumentation",
+              "src": "1935:250:11",
+              "text": " @notice Emitted when ragequitting a commitment\n @param _ragequitter The address who ragequit\n @param _commitment The ragequit commitment\n @param _label The commitment label\n @param _value The ragequit amount"
+            },
+            "eventSelector": "d2b3e868ae101106371f2bd93abc8d5a4de488b9fe47ed122c23625aa7172f13",
+            "id": 2974,
+            "name": "Ragequit",
+            "nameLocation": "2196:8:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2973,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2966,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_ragequitter",
+                  "nameLocation": "2230:12:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2974,
+                  "src": "2214:28:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2965,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2214:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2968,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_commitment",
+                  "nameLocation": "2260:11:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2974,
+                  "src": "2252:19:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2967,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2252:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2970,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_label",
+                  "nameLocation": "2289:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2974,
+                  "src": "2281:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2969,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2281:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2972,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "2313:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2974,
+                  "src": "2305:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2971,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2305:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2204:121:11"
+            },
+            "src": "2190:136:11"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2975,
+              "nodeType": "StructuredDocumentation",
+              "src": "2332:67:11",
+              "text": " @notice Emitted irreversibly suspending deposits"
+            },
+            "eventSelector": "f9dc79d7254099fdf1f86b15c91deac3bf8883e4f340ebef6e3c6b870cc315b3",
+            "id": 2977,
+            "name": "PoolDied",
+            "nameLocation": "2410:8:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2976,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2418:2:11"
+            },
+            "src": "2404:17:11"
+          },
+          {
+            "documentation": {
+              "id": 2978,
+              "nodeType": "StructuredDocumentation",
+              "src": "2602:104:11",
+              "text": " @notice Thrown when failing to verify a withdrawal proof through the Groth16 verifier"
+            },
+            "errorSelector": "09bde339",
+            "id": 2980,
+            "name": "InvalidProof",
+            "nameLocation": "2717:12:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2979,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2729:2:11"
+            },
+            "src": "2711:21:11"
+          },
+          {
+            "documentation": {
+              "id": 2981,
+              "nodeType": "StructuredDocumentation",
+              "src": "2738:100:11",
+              "text": " @notice Thrown when trying to spend a commitment that does not exist in the state"
+            },
+            "errorSelector": "c06789fa",
+            "id": 2983,
+            "name": "InvalidCommitment",
+            "nameLocation": "2849:17:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2982,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2866:2:11"
+            },
+            "src": "2843:26:11"
+          },
+          {
+            "documentation": {
+              "id": 2984,
+              "nodeType": "StructuredDocumentation",
+              "src": "2875:97:11",
+              "text": " @notice Thrown when calling `withdraw` while not being the allowed processooor"
+            },
+            "errorSelector": "1a7c48e5",
+            "id": 2986,
+            "name": "InvalidProcessooor",
+            "nameLocation": "2983:18:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2985,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3001:2:11"
+            },
+            "src": "2977:27:11"
+          },
+          {
+            "documentation": {
+              "id": 2987,
+              "nodeType": "StructuredDocumentation",
+              "src": "3010:129:11",
+              "text": " @notice Thrown when calling `withdraw` with a ASP or state tree depth greater or equal than the max tree depth"
+            },
+            "errorSelector": "c21cc8e2",
+            "id": 2989,
+            "name": "InvalidTreeDepth",
+            "nameLocation": "3150:16:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2988,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3166:2:11"
+            },
+            "src": "3144:25:11"
+          },
+          {
+            "documentation": {
+              "id": 2990,
+              "nodeType": "StructuredDocumentation",
+              "src": "3175:85:11",
+              "text": " @notice Thrown when trying to deposit an amount higher than 2**128"
+            },
+            "errorSelector": "428243e2",
+            "id": 2992,
+            "name": "InvalidDepositValue",
+            "nameLocation": "3271:19:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2991,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3290:2:11"
+            },
+            "src": "3265:28:11"
+          },
+          {
+            "documentation": {
+              "id": 2993,
+              "nodeType": "StructuredDocumentation",
+              "src": "3299:79:11",
+              "text": " @notice Thrown when providing an invalid scope for this pool"
+            },
+            "errorSelector": "e7bee380",
+            "id": 2995,
+            "name": "ScopeMismatch",
+            "nameLocation": "3389:13:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2994,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3402:2:11"
+            },
+            "src": "3383:22:11"
+          },
+          {
+            "documentation": {
+              "id": 2996,
+              "nodeType": "StructuredDocumentation",
+              "src": "3411:95:11",
+              "text": " @notice Thrown when providing an invalid context for the pool and withdrawal"
+            },
+            "errorSelector": "ef6daeb0",
+            "id": 2998,
+            "name": "ContextMismatch",
+            "nameLocation": "3517:15:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2997,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3532:2:11"
+            },
+            "src": "3511:24:11"
+          },
+          {
+            "documentation": {
+              "id": 2999,
+              "nodeType": "StructuredDocumentation",
+              "src": "3541:82:11",
+              "text": " @notice Thrown when providing an unknown or outdated state root"
+            },
+            "errorSelector": "fd3d3c4c",
+            "id": 3001,
+            "name": "UnknownStateRoot",
+            "nameLocation": "3634:16:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3000,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3650:2:11"
+            },
+            "src": "3628:25:11"
+          },
+          {
+            "documentation": {
+              "id": 3002,
+              "nodeType": "StructuredDocumentation",
+              "src": "3659:80:11",
+              "text": " @notice Thrown when providing an unknown or outdated ASP root"
+            },
+            "errorSelector": "a6a78244",
+            "id": 3004,
+            "name": "IncorrectASPRoot",
+            "nameLocation": "3750:16:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3003,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3766:2:11"
+            },
+            "src": "3744:25:11"
+          },
+          {
+            "documentation": {
+              "id": 3005,
+              "nodeType": "StructuredDocumentation",
+              "src": "3775:96:11",
+              "text": " @notice Thrown when trying to ragequit while not being the original depositor"
+            },
+            "errorSelector": "0fb8e278",
+            "id": 3007,
+            "name": "OnlyOriginalDepositor",
+            "nameLocation": "3882:21:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3006,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3903:2:11"
+            },
+            "src": "3876:30:11"
+          },
+          {
+            "documentation": {
+              "id": 3008,
+              "nodeType": "StructuredDocumentation",
+              "src": "4086:299:11",
+              "text": " @notice Deposit funds into the Privacy Pool\n @dev Only callable by the Entrypoint\n @param _depositor The depositor address\n @param _value The value being deposited\n @param _precommitment The precommitment hash\n @return _commitment The commitment hash"
+            },
+            "functionSelector": "0efe6a8b",
+            "id": 3019,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deposit",
+            "nameLocation": "4399:7:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3015,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3010,
+                  "mutability": "mutable",
+                  "name": "_depositor",
+                  "nameLocation": "4424:10:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3019,
+                  "src": "4416:18:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3009,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4416:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3012,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "4452:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3019,
+                  "src": "4444:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3011,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4444:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3014,
+                  "mutability": "mutable",
+                  "name": "_precommitment",
+                  "nameLocation": "4476:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3019,
+                  "src": "4468:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3013,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4468:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4406:90:11"
+            },
+            "returnParameters": {
+              "id": 3018,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3017,
+                  "mutability": "mutable",
+                  "name": "_commitment",
+                  "nameLocation": "4531:11:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3019,
+                  "src": "4523:19:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3016,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4523:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4522:21:11"
+            },
+            "scope": 3041,
+            "src": "4390:154:11",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3020,
+              "nodeType": "StructuredDocumentation",
+              "src": "4550:171:11",
+              "text": " @notice Privately withdraw funds by spending an existing commitment\n @param _w The `Withdrawal` struct\n @param _p The `WithdrawProof` struct"
+            },
+            "functionSelector": "30c0766d",
+            "id": 3029,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "4735:8:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3027,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3023,
+                  "mutability": "mutable",
+                  "name": "_w",
+                  "nameLocation": "4771:2:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3029,
+                  "src": "4753:20:11",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Withdrawal_$2939_memory_ptr",
+                    "typeString": "struct IPrivacyPool.Withdrawal"
+                  },
+                  "typeName": {
+                    "id": 3022,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3021,
+                      "name": "Withdrawal",
+                      "nameLocations": [
+                        "4753:10:11"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2939,
+                      "src": "4753:10:11"
+                    },
+                    "referencedDeclaration": 2939,
+                    "src": "4753:10:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Withdrawal_$2939_storage_ptr",
+                      "typeString": "struct IPrivacyPool.Withdrawal"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3026,
+                  "mutability": "mutable",
+                  "name": "_p",
+                  "nameLocation": "4813:2:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3029,
+                  "src": "4783:32:11",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_WithdrawProof_$2130_memory_ptr",
+                    "typeString": "struct ProofLib.WithdrawProof"
+                  },
+                  "typeName": {
+                    "id": 3025,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3024,
+                      "name": "ProofLib.WithdrawProof",
+                      "nameLocations": [
+                        "4783:8:11",
+                        "4792:13:11"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2130,
+                      "src": "4783:22:11"
+                    },
+                    "referencedDeclaration": 2130,
+                    "src": "4783:22:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_WithdrawProof_$2130_storage_ptr",
+                      "typeString": "struct ProofLib.WithdrawProof"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4743:78:11"
+            },
+            "returnParameters": {
+              "id": 3028,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4830:0:11"
+            },
+            "scope": 3041,
+            "src": "4726:105:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3030,
+              "nodeType": "StructuredDocumentation",
+              "src": "4837:193:11",
+              "text": " @notice Publicly withdraw funds to original depositor without exposing secrets\n @dev Only callable by the original depositor\n @param _p the `RagequitProof` struct"
+            },
+            "functionSelector": "71235b34",
+            "id": 3036,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "ragequit",
+            "nameLocation": "5044:8:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3034,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3033,
+                  "mutability": "mutable",
+                  "name": "_p",
+                  "nameLocation": "5083:2:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3036,
+                  "src": "5053:32:11",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_RagequitProof_$2270_memory_ptr",
+                    "typeString": "struct ProofLib.RagequitProof"
+                  },
+                  "typeName": {
+                    "id": 3032,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3031,
+                      "name": "ProofLib.RagequitProof",
+                      "nameLocations": [
+                        "5053:8:11",
+                        "5062:13:11"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2270,
+                      "src": "5053:22:11"
+                    },
+                    "referencedDeclaration": 2270,
+                    "src": "5053:22:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_RagequitProof_$2270_storage_ptr",
+                      "typeString": "struct ProofLib.RagequitProof"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5052:34:11"
+            },
+            "returnParameters": {
+              "id": 3035,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5095:0:11"
+            },
+            "scope": 3041,
+            "src": "5035:61:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3037,
+              "nodeType": "StructuredDocumentation",
+              "src": "5102:147:11",
+              "text": " @notice Irreversibly suspends deposits\n @dev Withdrawals can never be disabled\n @dev Only callable by the Entrypoint"
+            },
+            "functionSelector": "b85c5145",
+            "id": 3040,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "windDown",
+            "nameLocation": "5263:8:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3038,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5271:2:11"
+            },
+            "returnParameters": {
+              "id": 3039,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5282:0:11"
+            },
+            "scope": 3041,
+            "src": "5254:29:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3062,
+        "src": "240:5045:11",
+        "usedErrors": [
+          2980,
+          2983,
+          2986,
+          2989,
+          2992,
+          2995,
+          2998,
+          3001,
+          3004,
+          3007,
+          3080,
+          3083,
+          3086,
+          3089,
+          3092,
+          3095
+        ],
+        "usedEvents": [
+          2952,
+          2963,
+          2974,
+          2977,
+          3077
+        ]
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 3043,
+              "name": "IPrivacyPool",
+              "nameLocations": [
+                "5425:12:11"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 3041,
+              "src": "5425:12:11"
+            },
+            "id": 3044,
+            "nodeType": "InheritanceSpecifier",
+            "src": "5425:12:11"
+          }
+        ],
+        "canonicalName": "IPrivacyPoolSimple",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 3042,
+          "nodeType": "StructuredDocumentation",
+          "src": "5287:105:11",
+          "text": " @title IPrivacyPoolSimple\n @notice Interface for the PrivacyPool native asset implementation"
+        },
+        "fullyImplemented": false,
+        "id": 3051,
+        "linearizedBaseContracts": [
+          3051,
+          3041,
+          3201
+        ],
+        "name": "IPrivacyPoolSimple",
+        "nameLocation": "5403:18:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 3045,
+              "nodeType": "StructuredDocumentation",
+              "src": "5619:88:11",
+              "text": " @notice Thrown when sending less amount of native asset than required"
+            },
+            "errorSelector": "11011294",
+            "id": 3047,
+            "name": "InsufficientValue",
+            "nameLocation": "5718:17:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3046,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5735:2:11"
+            },
+            "src": "5712:26:11"
+          },
+          {
+            "documentation": {
+              "id": 3048,
+              "nodeType": "StructuredDocumentation",
+              "src": "5744:81:11",
+              "text": " @notice Thrown when failing to send native asset to an account"
+            },
+            "errorSelector": "d58db962",
+            "id": 3050,
+            "name": "FailedToSendNativeAsset",
+            "nameLocation": "5836:23:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3049,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5859:2:11"
+            },
+            "src": "5830:32:11"
+          }
+        ],
+        "scope": 3062,
+        "src": "5393:471:11",
+        "usedErrors": [
+          2980,
+          2983,
+          2986,
+          2989,
+          2992,
+          2995,
+          2998,
+          3001,
+          3004,
+          3007,
+          3047,
+          3050,
+          3080,
+          3083,
+          3086,
+          3089,
+          3092,
+          3095
+        ],
+        "usedEvents": [
+          2952,
+          2963,
+          2974,
+          2977,
+          3077
+        ]
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 3053,
+              "name": "IPrivacyPool",
+              "nameLocations": [
+                "5999:12:11"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 3041,
+              "src": "5999:12:11"
+            },
+            "id": 3054,
+            "nodeType": "InheritanceSpecifier",
+            "src": "5999:12:11"
+          }
+        ],
+        "canonicalName": "IPrivacyPoolComplex",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 3052,
+          "nodeType": "StructuredDocumentation",
+          "src": "5866:99:11",
+          "text": " @title IPrivacyPoolComplex\n @notice Interface for the PrivacyPool ERC20 implementation"
+        },
+        "fullyImplemented": false,
+        "id": 3061,
+        "linearizedBaseContracts": [
+          3061,
+          3041,
+          3201
+        ],
+        "name": "IPrivacyPoolComplex",
+        "nameLocation": "5976:19:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 3055,
+              "nodeType": "StructuredDocumentation",
+              "src": "6193:81:11",
+              "text": " @notice Thrown when sending sending any amount of native asset"
+            },
+            "errorSelector": "7ae90118",
+            "id": 3057,
+            "name": "NativeAssetNotAccepted",
+            "nameLocation": "6285:22:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3056,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6307:2:11"
+            },
+            "src": "6279:31:11"
+          },
+          {
+            "documentation": {
+              "id": 3058,
+              "nodeType": "StructuredDocumentation",
+              "src": "6316:92:11",
+              "text": " @notice Thrown when trying to set up a complex pool with the native asset"
+            },
+            "errorSelector": "5ded5997",
+            "id": 3060,
+            "name": "NativeAssetNotSupported",
+            "nameLocation": "6419:23:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3059,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6442:2:11"
+            },
+            "src": "6413:32:11"
+          }
+        ],
+        "scope": 3062,
+        "src": "5966:481:11",
+        "usedErrors": [
+          2980,
+          2983,
+          2986,
+          2989,
+          2992,
+          2995,
+          2998,
+          3001,
+          3004,
+          3007,
+          3057,
+          3060,
+          3080,
+          3083,
+          3086,
+          3089,
+          3092,
+          3095
+        ],
+        "usedEvents": [
+          2952,
+          2963,
+          2974,
+          2977,
+          3077
+        ]
+      }
+    ],
+    "src": "39:6409:11"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IPrivacyPool.sol",
+    "exportedSymbols": {
+      "IPrivacyPool": [
+        3041
+      ],
+      "IPrivacyPoolComplex": [
+        3061
+      ],
+      "IPrivacyPoolSimple": [
+        3051
+      ],
+      "IState": [
+        3201
+      ],
+      "ProofLib": [
+        2331
+      ]
+    },
+    "id": 3062,
+    "license": "Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2926,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:11"
+      },
+      {
+        "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/contracts/lib/ProofLib.sol",
+        "file": "../contracts/lib/ProofLib.sol",
+        "id": 2928,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3062,
+        "sourceUnit": 2332,
+        "src": "65:55:11",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 2927,
+              "name": "ProofLib",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 2331,
+              "src": "73:8:11",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/interfaces/IState.sol",
+        "file": "./IState.sol",
+        "id": 2930,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3062,
+        "sourceUnit": 3202,
+        "src": "121:36:11",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 2929,
+              "name": "IState",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 3201,
+              "src": "129:6:11",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 2932,
+              "name": "IState",
+              "nameLocations": [
+                "266:6:11"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 3201,
+              "src": "266:6:11"
+            },
+            "id": 2933,
+            "nodeType": "InheritanceSpecifier",
+            "src": "266:6:11"
+          }
+        ],
+        "canonicalName": "IPrivacyPool",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 2931,
+          "nodeType": "StructuredDocumentation",
+          "src": "159:80:11",
+          "text": " @title IPrivacyPool\n @notice Interface for the PrivacyPool contract"
+        },
+        "fullyImplemented": false,
+        "id": 3041,
+        "linearizedBaseContracts": [
+          3041,
+          3201
+        ],
+        "name": "IPrivacyPool",
+        "nameLocation": "250:12:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IPrivacyPool.Withdrawal",
+            "documentation": {
+              "id": 2934,
+              "nodeType": "StructuredDocumentation",
+              "src": "455:284:11",
+              "text": " @notice Struct for the withdrawal request\n @dev The integrity of this data is ensured by the `context` signal in the proof\n @param processooor The allowed address to process the withdrawal\n @param data Encoded arbitrary data used by the Entrypoint"
+            },
+            "id": 2939,
+            "members": [
+              {
+                "constant": false,
+                "id": 2936,
+                "mutability": "mutable",
+                "name": "processooor",
+                "nameLocation": "780:11:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 2939,
+                "src": "772:19:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 2935,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "772:7:11",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2938,
+                "mutability": "mutable",
+                "name": "data",
+                "nameLocation": "807:4:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 2939,
+                "src": "801:10:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 2937,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "801:5:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Withdrawal",
+            "nameLocation": "751:10:11",
+            "nodeType": "StructDefinition",
+            "scope": 3041,
+            "src": "744:74:11",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2940,
+              "nodeType": "StructuredDocumentation",
+              "src": "999:316:11",
+              "text": " @notice Emitted when making a user deposit\n @param _depositor The address of the depositor\n @param _commitment The commitment hash\n @param _label The deposit generated label\n @param _value The deposited amount\n @param _precommitmentHash The deposit precommitment hash"
+            },
+            "eventSelector": "e3b53cd1a44fbf11535e145d80b8ef1ed6d57a73bf5daa7e939b6b01657d6549",
+            "id": 2952,
+            "name": "Deposited",
+            "nameLocation": "1326:9:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2951,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2942,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_depositor",
+                  "nameLocation": "1361:10:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2952,
+                  "src": "1345:26:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2941,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1345:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2944,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_commitment",
+                  "nameLocation": "1389:11:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2952,
+                  "src": "1381:19:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2943,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1381:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2946,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_label",
+                  "nameLocation": "1418:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2952,
+                  "src": "1410:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2945,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1410:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2948,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "1442:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2952,
+                  "src": "1434:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2947,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1434:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2950,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_precommitmentHash",
+                  "nameLocation": "1466:18:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2952,
+                  "src": "1458:26:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2949,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1458:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1335:155:11"
+            },
+            "src": "1320:171:11"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2953,
+              "nodeType": "StructuredDocumentation",
+              "src": "1497:278:11",
+              "text": " @notice Emitted when processing a withdrawal\n @param _processooor The address which processed the withdrawal\n @param _value The withdrawn amount\n @param _spentNullifier The spent nullifier\n @param _newCommitment The new commitment hash"
+            },
+            "eventSelector": "75e161b3e824b114fc1a33274bd7091918dd4e639cede50b78b15a4eea956a21",
+            "id": 2963,
+            "name": "Withdrawn",
+            "nameLocation": "1786:9:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2962,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2955,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_processooor",
+                  "nameLocation": "1821:12:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2963,
+                  "src": "1805:28:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2954,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1805:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2957,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "1851:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2963,
+                  "src": "1843:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2956,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1843:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2959,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_spentNullifier",
+                  "nameLocation": "1875:15:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2963,
+                  "src": "1867:23:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2958,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1867:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2961,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_newCommitment",
+                  "nameLocation": "1908:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2963,
+                  "src": "1900:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2960,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1900:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1795:133:11"
+            },
+            "src": "1780:149:11"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2964,
+              "nodeType": "StructuredDocumentation",
+              "src": "1935:250:11",
+              "text": " @notice Emitted when ragequitting a commitment\n @param _ragequitter The address who ragequit\n @param _commitment The ragequit commitment\n @param _label The commitment label\n @param _value The ragequit amount"
+            },
+            "eventSelector": "d2b3e868ae101106371f2bd93abc8d5a4de488b9fe47ed122c23625aa7172f13",
+            "id": 2974,
+            "name": "Ragequit",
+            "nameLocation": "2196:8:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2973,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2966,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_ragequitter",
+                  "nameLocation": "2230:12:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2974,
+                  "src": "2214:28:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2965,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2214:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2968,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_commitment",
+                  "nameLocation": "2260:11:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2974,
+                  "src": "2252:19:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2967,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2252:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2970,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_label",
+                  "nameLocation": "2289:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2974,
+                  "src": "2281:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2969,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2281:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2972,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "2313:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2974,
+                  "src": "2305:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2971,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2305:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2204:121:11"
+            },
+            "src": "2190:136:11"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2975,
+              "nodeType": "StructuredDocumentation",
+              "src": "2332:67:11",
+              "text": " @notice Emitted irreversibly suspending deposits"
+            },
+            "eventSelector": "f9dc79d7254099fdf1f86b15c91deac3bf8883e4f340ebef6e3c6b870cc315b3",
+            "id": 2977,
+            "name": "PoolDied",
+            "nameLocation": "2410:8:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2976,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2418:2:11"
+            },
+            "src": "2404:17:11"
+          },
+          {
+            "documentation": {
+              "id": 2978,
+              "nodeType": "StructuredDocumentation",
+              "src": "2602:104:11",
+              "text": " @notice Thrown when failing to verify a withdrawal proof through the Groth16 verifier"
+            },
+            "errorSelector": "09bde339",
+            "id": 2980,
+            "name": "InvalidProof",
+            "nameLocation": "2717:12:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2979,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2729:2:11"
+            },
+            "src": "2711:21:11"
+          },
+          {
+            "documentation": {
+              "id": 2981,
+              "nodeType": "StructuredDocumentation",
+              "src": "2738:100:11",
+              "text": " @notice Thrown when trying to spend a commitment that does not exist in the state"
+            },
+            "errorSelector": "c06789fa",
+            "id": 2983,
+            "name": "InvalidCommitment",
+            "nameLocation": "2849:17:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2982,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2866:2:11"
+            },
+            "src": "2843:26:11"
+          },
+          {
+            "documentation": {
+              "id": 2984,
+              "nodeType": "StructuredDocumentation",
+              "src": "2875:97:11",
+              "text": " @notice Thrown when calling `withdraw` while not being the allowed processooor"
+            },
+            "errorSelector": "1a7c48e5",
+            "id": 2986,
+            "name": "InvalidProcessooor",
+            "nameLocation": "2983:18:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2985,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3001:2:11"
+            },
+            "src": "2977:27:11"
+          },
+          {
+            "documentation": {
+              "id": 2987,
+              "nodeType": "StructuredDocumentation",
+              "src": "3010:129:11",
+              "text": " @notice Thrown when calling `withdraw` with a ASP or state tree depth greater or equal than the max tree depth"
+            },
+            "errorSelector": "c21cc8e2",
+            "id": 2989,
+            "name": "InvalidTreeDepth",
+            "nameLocation": "3150:16:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2988,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3166:2:11"
+            },
+            "src": "3144:25:11"
+          },
+          {
+            "documentation": {
+              "id": 2990,
+              "nodeType": "StructuredDocumentation",
+              "src": "3175:85:11",
+              "text": " @notice Thrown when trying to deposit an amount higher than 2**128"
+            },
+            "errorSelector": "428243e2",
+            "id": 2992,
+            "name": "InvalidDepositValue",
+            "nameLocation": "3271:19:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2991,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3290:2:11"
+            },
+            "src": "3265:28:11"
+          },
+          {
+            "documentation": {
+              "id": 2993,
+              "nodeType": "StructuredDocumentation",
+              "src": "3299:79:11",
+              "text": " @notice Thrown when providing an invalid scope for this pool"
+            },
+            "errorSelector": "e7bee380",
+            "id": 2995,
+            "name": "ScopeMismatch",
+            "nameLocation": "3389:13:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2994,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3402:2:11"
+            },
+            "src": "3383:22:11"
+          },
+          {
+            "documentation": {
+              "id": 2996,
+              "nodeType": "StructuredDocumentation",
+              "src": "3411:95:11",
+              "text": " @notice Thrown when providing an invalid context for the pool and withdrawal"
+            },
+            "errorSelector": "ef6daeb0",
+            "id": 2998,
+            "name": "ContextMismatch",
+            "nameLocation": "3517:15:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 2997,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3532:2:11"
+            },
+            "src": "3511:24:11"
+          },
+          {
+            "documentation": {
+              "id": 2999,
+              "nodeType": "StructuredDocumentation",
+              "src": "3541:82:11",
+              "text": " @notice Thrown when providing an unknown or outdated state root"
+            },
+            "errorSelector": "fd3d3c4c",
+            "id": 3001,
+            "name": "UnknownStateRoot",
+            "nameLocation": "3634:16:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3000,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3650:2:11"
+            },
+            "src": "3628:25:11"
+          },
+          {
+            "documentation": {
+              "id": 3002,
+              "nodeType": "StructuredDocumentation",
+              "src": "3659:80:11",
+              "text": " @notice Thrown when providing an unknown or outdated ASP root"
+            },
+            "errorSelector": "a6a78244",
+            "id": 3004,
+            "name": "IncorrectASPRoot",
+            "nameLocation": "3750:16:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3003,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3766:2:11"
+            },
+            "src": "3744:25:11"
+          },
+          {
+            "documentation": {
+              "id": 3005,
+              "nodeType": "StructuredDocumentation",
+              "src": "3775:96:11",
+              "text": " @notice Thrown when trying to ragequit while not being the original depositor"
+            },
+            "errorSelector": "0fb8e278",
+            "id": 3007,
+            "name": "OnlyOriginalDepositor",
+            "nameLocation": "3882:21:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3006,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3903:2:11"
+            },
+            "src": "3876:30:11"
+          },
+          {
+            "documentation": {
+              "id": 3008,
+              "nodeType": "StructuredDocumentation",
+              "src": "4086:299:11",
+              "text": " @notice Deposit funds into the Privacy Pool\n @dev Only callable by the Entrypoint\n @param _depositor The depositor address\n @param _value The value being deposited\n @param _precommitment The precommitment hash\n @return _commitment The commitment hash"
+            },
+            "functionSelector": "0efe6a8b",
+            "id": 3019,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deposit",
+            "nameLocation": "4399:7:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3015,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3010,
+                  "mutability": "mutable",
+                  "name": "_depositor",
+                  "nameLocation": "4424:10:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3019,
+                  "src": "4416:18:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3009,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4416:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3012,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "4452:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3019,
+                  "src": "4444:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3011,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4444:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3014,
+                  "mutability": "mutable",
+                  "name": "_precommitment",
+                  "nameLocation": "4476:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3019,
+                  "src": "4468:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3013,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4468:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4406:90:11"
+            },
+            "returnParameters": {
+              "id": 3018,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3017,
+                  "mutability": "mutable",
+                  "name": "_commitment",
+                  "nameLocation": "4531:11:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3019,
+                  "src": "4523:19:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3016,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4523:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4522:21:11"
+            },
+            "scope": 3041,
+            "src": "4390:154:11",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3020,
+              "nodeType": "StructuredDocumentation",
+              "src": "4550:171:11",
+              "text": " @notice Privately withdraw funds by spending an existing commitment\n @param _w The `Withdrawal` struct\n @param _p The `WithdrawProof` struct"
+            },
+            "functionSelector": "30c0766d",
+            "id": 3029,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "4735:8:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3027,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3023,
+                  "mutability": "mutable",
+                  "name": "_w",
+                  "nameLocation": "4771:2:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3029,
+                  "src": "4753:20:11",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Withdrawal_$2939_memory_ptr",
+                    "typeString": "struct IPrivacyPool.Withdrawal"
+                  },
+                  "typeName": {
+                    "id": 3022,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3021,
+                      "name": "Withdrawal",
+                      "nameLocations": [
+                        "4753:10:11"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2939,
+                      "src": "4753:10:11"
+                    },
+                    "referencedDeclaration": 2939,
+                    "src": "4753:10:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Withdrawal_$2939_storage_ptr",
+                      "typeString": "struct IPrivacyPool.Withdrawal"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3026,
+                  "mutability": "mutable",
+                  "name": "_p",
+                  "nameLocation": "4813:2:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3029,
+                  "src": "4783:32:11",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_WithdrawProof_$2130_memory_ptr",
+                    "typeString": "struct ProofLib.WithdrawProof"
+                  },
+                  "typeName": {
+                    "id": 3025,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3024,
+                      "name": "ProofLib.WithdrawProof",
+                      "nameLocations": [
+                        "4783:8:11",
+                        "4792:13:11"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2130,
+                      "src": "4783:22:11"
+                    },
+                    "referencedDeclaration": 2130,
+                    "src": "4783:22:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_WithdrawProof_$2130_storage_ptr",
+                      "typeString": "struct ProofLib.WithdrawProof"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4743:78:11"
+            },
+            "returnParameters": {
+              "id": 3028,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4830:0:11"
+            },
+            "scope": 3041,
+            "src": "4726:105:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3030,
+              "nodeType": "StructuredDocumentation",
+              "src": "4837:193:11",
+              "text": " @notice Publicly withdraw funds to original depositor without exposing secrets\n @dev Only callable by the original depositor\n @param _p the `RagequitProof` struct"
+            },
+            "functionSelector": "71235b34",
+            "id": 3036,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "ragequit",
+            "nameLocation": "5044:8:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3034,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3033,
+                  "mutability": "mutable",
+                  "name": "_p",
+                  "nameLocation": "5083:2:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3036,
+                  "src": "5053:32:11",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_RagequitProof_$2270_memory_ptr",
+                    "typeString": "struct ProofLib.RagequitProof"
+                  },
+                  "typeName": {
+                    "id": 3032,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3031,
+                      "name": "ProofLib.RagequitProof",
+                      "nameLocations": [
+                        "5053:8:11",
+                        "5062:13:11"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2270,
+                      "src": "5053:22:11"
+                    },
+                    "referencedDeclaration": 2270,
+                    "src": "5053:22:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_RagequitProof_$2270_storage_ptr",
+                      "typeString": "struct ProofLib.RagequitProof"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5052:34:11"
+            },
+            "returnParameters": {
+              "id": 3035,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5095:0:11"
+            },
+            "scope": 3041,
+            "src": "5035:61:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3037,
+              "nodeType": "StructuredDocumentation",
+              "src": "5102:147:11",
+              "text": " @notice Irreversibly suspends deposits\n @dev Withdrawals can never be disabled\n @dev Only callable by the Entrypoint"
+            },
+            "functionSelector": "b85c5145",
+            "id": 3040,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "windDown",
+            "nameLocation": "5263:8:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3038,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5271:2:11"
+            },
+            "returnParameters": {
+              "id": 3039,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5282:0:11"
+            },
+            "scope": 3041,
+            "src": "5254:29:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3062,
+        "src": "240:5045:11",
+        "usedErrors": [
+          2980,
+          2983,
+          2986,
+          2989,
+          2992,
+          2995,
+          2998,
+          3001,
+          3004,
+          3007,
+          3080,
+          3083,
+          3086,
+          3089,
+          3092,
+          3095
+        ],
+        "usedEvents": [
+          2952,
+          2963,
+          2974,
+          2977,
+          3077
+        ]
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 3043,
+              "name": "IPrivacyPool",
+              "nameLocations": [
+                "5425:12:11"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 3041,
+              "src": "5425:12:11"
+            },
+            "id": 3044,
+            "nodeType": "InheritanceSpecifier",
+            "src": "5425:12:11"
+          }
+        ],
+        "canonicalName": "IPrivacyPoolSimple",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 3042,
+          "nodeType": "StructuredDocumentation",
+          "src": "5287:105:11",
+          "text": " @title IPrivacyPoolSimple\n @notice Interface for the PrivacyPool native asset implementation"
+        },
+        "fullyImplemented": false,
+        "id": 3051,
+        "linearizedBaseContracts": [
+          3051,
+          3041,
+          3201
+        ],
+        "name": "IPrivacyPoolSimple",
+        "nameLocation": "5403:18:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 3045,
+              "nodeType": "StructuredDocumentation",
+              "src": "5619:88:11",
+              "text": " @notice Thrown when sending less amount of native asset than required"
+            },
+            "errorSelector": "11011294",
+            "id": 3047,
+            "name": "InsufficientValue",
+            "nameLocation": "5718:17:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3046,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5735:2:11"
+            },
+            "src": "5712:26:11"
+          },
+          {
+            "documentation": {
+              "id": 3048,
+              "nodeType": "StructuredDocumentation",
+              "src": "5744:81:11",
+              "text": " @notice Thrown when failing to send native asset to an account"
+            },
+            "errorSelector": "d58db962",
+            "id": 3050,
+            "name": "FailedToSendNativeAsset",
+            "nameLocation": "5836:23:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3049,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5859:2:11"
+            },
+            "src": "5830:32:11"
+          }
+        ],
+        "scope": 3062,
+        "src": "5393:471:11",
+        "usedErrors": [
+          2980,
+          2983,
+          2986,
+          2989,
+          2992,
+          2995,
+          2998,
+          3001,
+          3004,
+          3007,
+          3047,
+          3050,
+          3080,
+          3083,
+          3086,
+          3089,
+          3092,
+          3095
+        ],
+        "usedEvents": [
+          2952,
+          2963,
+          2974,
+          2977,
+          3077
+        ]
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 3053,
+              "name": "IPrivacyPool",
+              "nameLocations": [
+                "5999:12:11"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 3041,
+              "src": "5999:12:11"
+            },
+            "id": 3054,
+            "nodeType": "InheritanceSpecifier",
+            "src": "5999:12:11"
+          }
+        ],
+        "canonicalName": "IPrivacyPoolComplex",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 3052,
+          "nodeType": "StructuredDocumentation",
+          "src": "5866:99:11",
+          "text": " @title IPrivacyPoolComplex\n @notice Interface for the PrivacyPool ERC20 implementation"
+        },
+        "fullyImplemented": false,
+        "id": 3061,
+        "linearizedBaseContracts": [
+          3061,
+          3041,
+          3201
+        ],
+        "name": "IPrivacyPoolComplex",
+        "nameLocation": "5976:19:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 3055,
+              "nodeType": "StructuredDocumentation",
+              "src": "6193:81:11",
+              "text": " @notice Thrown when sending sending any amount of native asset"
+            },
+            "errorSelector": "7ae90118",
+            "id": 3057,
+            "name": "NativeAssetNotAccepted",
+            "nameLocation": "6285:22:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3056,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6307:2:11"
+            },
+            "src": "6279:31:11"
+          },
+          {
+            "documentation": {
+              "id": 3058,
+              "nodeType": "StructuredDocumentation",
+              "src": "6316:92:11",
+              "text": " @notice Thrown when trying to set up a complex pool with the native asset"
+            },
+            "errorSelector": "5ded5997",
+            "id": 3060,
+            "name": "NativeAssetNotSupported",
+            "nameLocation": "6419:23:11",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3059,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6442:2:11"
+            },
+            "src": "6413:32:11"
+          }
+        ],
+        "scope": 3062,
+        "src": "5966:481:11",
+        "usedErrors": [
+          2980,
+          2983,
+          2986,
+          2989,
+          2992,
+          2995,
+          2998,
+          3001,
+          3004,
+          3007,
+          3057,
+          3060,
+          3080,
+          3083,
+          3086,
+          3089,
+          3092,
+          3095
+        ],
+        "usedEvents": [
+          2952,
+          2963,
+          2974,
+          2977,
+          3077
+        ]
+      }
+    ],
+    "src": "39:6409:11"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.22+commit.5ed3e10f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2025-11-27T12:44:34.041Z"
+}
