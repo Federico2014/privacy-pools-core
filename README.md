@@ -32,4 +32,10 @@ To set up the development environment:
 ```bash
 # Install dependencies
 yarn
+
+# compile contracts
+yarn compile
+
+#deploy the contracts on TRON nile testnet:
+yarn deploy-nile
 ```

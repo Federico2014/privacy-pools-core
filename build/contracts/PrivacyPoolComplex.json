@@ -3095,7 +3095,17 @@
     "name": "solc",
     "version": "0.8.22+commit.5ed3e10f.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "3": {
+      "events": {},
+      "links": {
+        "PoseidonT3": "4191644e6e8c2706794624647ac1692425f29333f5",
+        "PoseidonT4": "419b946ff40feacf81df1cccf07b66f2ebb5fe557b"
+      },
+      "address": "41996c51a6ff77777af385468e7ad82c74f521aa99",
+      "transactionHash": "f04ecae1c9e0a4e12aec771cc4a99a0ce9309c4f40a5e87b8ed96f432cf1b030"
+    }
+  },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2025-11-27T12:44:34.032Z"
+  "updatedAt": "2025-11-28T10:01:05.070Z"
 }

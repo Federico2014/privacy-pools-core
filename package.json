@@ -5,7 +5,8 @@
   "license": "Apache-2.0",
   "author": "Wonderland",
   "scripts": {
-    "compile": "npx tronbox compile"
+    "compile": "npx tronbox compile",
+    "deploy-nile": "source .env && npx tronbox migrate --f 2 --to 2 --network nile"
   },
   "dependencies": {
     "@openzeppelin/contracts": "5.1.0",

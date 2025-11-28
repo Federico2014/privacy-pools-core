@@ -3,23 +3,23 @@
   "abi": [],
   "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26474726f6e582212209890b60513a2f918c83f27048fa5a38c8f0f7c15474402cca5e08282433a7f9f64736f6c63430008160033",
   "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26474726f6e582212209890b60513a2f918c83f27048fa5a38c8f0f7c15474402cca5e08282433a7f9f64736f6c63430008160033",
-  "sourceMap": "65:256:5:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;65:256:5;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "65:256:5:-:0;;;;;;;;",
+  "sourceMap": "65:256:1:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;65:256:1;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "65:256:1:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: Apache-2.0\npragma solidity ^0.8.20;\n\nlibrary Constants {\n    uint256 constant SNARK_SCALAR_FIELD =\n        21_888_242_871_839_275_222_246_405_745_257_275_088_548_364_400_416_034_343_698_204_186_575_808_495_617;\n\n    address constant NATIVE_ASSET = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;\n}\n",
   "sourcePath": "/Users/tron/federico/privacy-pools-core/contracts/contracts/lib/Constants.sol",
   "ast": {
     "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/contracts/lib/Constants.sol",
     "exportedSymbols": {
       "Constants": [
-        2021
+        1106
       ]
     },
-    "id": 2022,
+    "id": 1107,
     "license": "Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2014,
+        "id": 1099,
         "literals": [
           "solidity",
           "^",
@@ -27,7 +27,7 @@
           ".20"
         ],
         "nodeType": "PragmaDirective",
-        "src": "39:24:5"
+        "src": "39:24:1"
       },
       {
         "abstract": false,
@@ -36,23 +36,23 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 2021,
+        "id": 1106,
         "linearizedBaseContracts": [
-          2021
+          1106
         ],
         "name": "Constants",
-        "nameLocation": "73:9:5",
+        "nameLocation": "73:9:1",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 2017,
+            "id": 1102,
             "mutability": "constant",
             "name": "SNARK_SCALAR_FIELD",
-            "nameLocation": "106:18:5",
+            "nameLocation": "106:18:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2021,
-            "src": "89:148:5",
+            "scope": 1106,
+            "src": "89:148:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -60,10 +60,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2015,
+              "id": 1100,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "89:7:5",
+              "src": "89:7:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -71,14 +71,14 @@
             },
             "value": {
               "hexValue": "32315f3838385f3234325f3837315f3833395f3237355f3232325f3234365f3430355f3734355f3235375f3237355f3038385f3534385f3336345f3430305f3431365f3033345f3334335f3639385f3230345f3138365f3537355f3830385f3439355f363137",
-              "id": 2016,
+              "id": 1101,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "135:102:5",
+              "src": "135:102:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_21888242871839275222246405745257275088548364400416034343698204186575808495617_by_1",
                 "typeString": "int_const 2188...(69 digits omitted)...5617"
@@ -89,13 +89,13 @@
           },
           {
             "constant": true,
-            "id": 2020,
+            "id": 1105,
             "mutability": "constant",
             "name": "NATIVE_ASSET",
-            "nameLocation": "261:12:5",
+            "nameLocation": "261:12:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2021,
-            "src": "244:74:5",
+            "scope": 1106,
+            "src": "244:74:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -103,10 +103,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2018,
+              "id": 1103,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "244:7:5",
+              "src": "244:7:1",
               "stateMutability": "nonpayable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
@@ -115,14 +115,14 @@
             },
             "value": {
               "hexValue": "307845656565654565656545654565654565456545656545454565656565456565656565656545456545",
-              "id": 2019,
+              "id": 1104,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "276:42:5",
+              "src": "276:42:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -132,27 +132,27 @@
             "visibility": "internal"
           }
         ],
-        "scope": 2022,
-        "src": "65:256:5",
+        "scope": 1107,
+        "src": "65:256:1",
         "usedErrors": [],
         "usedEvents": []
       }
     ],
-    "src": "39:283:5"
+    "src": "39:283:1"
   },
   "legacyAST": {
     "absolutePath": "/Users/tron/federico/privacy-pools-core/contracts/contracts/lib/Constants.sol",
     "exportedSymbols": {
       "Constants": [
-        2021
+        1106
       ]
     },
-    "id": 2022,
+    "id": 1107,
     "license": "Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2014,
+        "id": 1099,
         "literals": [
           "solidity",
           "^",
@@ -160,7 +160,7 @@
           ".20"
         ],
         "nodeType": "PragmaDirective",
-        "src": "39:24:5"
+        "src": "39:24:1"
       },
       {
         "abstract": false,
@@ -169,23 +169,23 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 2021,
+        "id": 1106,
         "linearizedBaseContracts": [
-          2021
+          1106
         ],
         "name": "Constants",
-        "nameLocation": "73:9:5",
+        "nameLocation": "73:9:1",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 2017,
+            "id": 1102,
             "mutability": "constant",
             "name": "SNARK_SCALAR_FIELD",
-            "nameLocation": "106:18:5",
+            "nameLocation": "106:18:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2021,
-            "src": "89:148:5",
+            "scope": 1106,
+            "src": "89:148:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -193,10 +193,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2015,
+              "id": 1100,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "89:7:5",
+              "src": "89:7:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -204,14 +204,14 @@
             },
             "value": {
               "hexValue": "32315f3838385f3234325f3837315f3833395f3237355f3232325f3234365f3430355f3734355f3235375f3237355f3038385f3534385f3336345f3430305f3431365f3033345f3334335f3639385f3230345f3138365f3537355f3830385f3439355f363137",
-              "id": 2016,
+              "id": 1101,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "135:102:5",
+              "src": "135:102:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_21888242871839275222246405745257275088548364400416034343698204186575808495617_by_1",
                 "typeString": "int_const 2188...(69 digits omitted)...5617"
@@ -222,13 +222,13 @@
           },
           {
             "constant": true,
-            "id": 2020,
+            "id": 1105,
             "mutability": "constant",
             "name": "NATIVE_ASSET",
-            "nameLocation": "261:12:5",
+            "nameLocation": "261:12:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2021,
-            "src": "244:74:5",
+            "scope": 1106,
+            "src": "244:74:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -236,10 +236,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2018,
+              "id": 1103,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "244:7:5",
+              "src": "244:7:1",
               "stateMutability": "nonpayable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
@@ -248,14 +248,14 @@
             },
             "value": {
               "hexValue": "307845656565654565656545654565654565456545656545454565656565456565656565656545456545",
-              "id": 2019,
+              "id": 1104,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "276:42:5",
+              "src": "276:42:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -265,13 +265,13 @@
             "visibility": "internal"
           }
         ],
-        "scope": 2022,
-        "src": "65:256:5",
+        "scope": 1107,
+        "src": "65:256:1",
         "usedErrors": [],
         "usedEvents": []
       }
     ],
-    "src": "39:283:5"
+    "src": "39:283:1"
   },
   "compiler": {
     "name": "solc",
@@ -279,5 +279,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2025-11-27T12:44:34.033Z"
+  "updatedAt": "2025-11-28T08:43:17.891Z"
 }
