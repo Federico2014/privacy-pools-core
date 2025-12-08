@@ -28,6 +28,7 @@ See the README in each package for detailed information about their specific imp
 ## Development
 
 To set up the development environment:
+use node v24 version
 
 ```bash
 # Install dependencies

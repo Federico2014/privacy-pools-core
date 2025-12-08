@@ -6,9 +6,16 @@
   "author": "Wonderland",
   "scripts": {
     "compile": "npx tronbox compile",
-    "deploy-nile": "source .env && npx tronbox migrate --f 2 --to 2 --network nile"
+    "deploy-nile": "source .env && npx tronbox migrate --f 2 --to 2 --network nile",
+    "generate-precommit": "npx ts-node scripts/generate.precommit.ts",
+    "verify-commit": "node scripts/CalculateRoot.mjs  commits.csv",
+    "generate-labels-root": "node scripts/tree.mjs",
+    "generate-commits-merkle-proof": "node scripts/MerkleProofFromFile.mjs scripts/commits.csv 6326379514178335457990272678598930647783674263311500391657319667565187396217",
+    "generate-labels-merkle-proof": "node scripts/MerkleProofFromFile.mjs scripts/labels.csv 7062413884949500027969856899144657478637089114548639929856523004629508770720",
+    "calculate-context": "node scripts/CalculateContext.mjs"
   },
   "dependencies": {
+    "@0xbow/privacy-pools-core-sdk": "^1.0.2",
     "@openzeppelin/contracts": "5.1.0",
     "@openzeppelin/contracts-upgradeable": "5.0.2",
     "@zk-kit/lean-imt": "2.2.2",
