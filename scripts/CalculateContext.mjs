@@ -16,9 +16,9 @@ const encodeData = encodeAbiParameters(
 
 console.log("data: ", encodeData);
 
-// const processorAddr = getAddress("0x83BF6BD52A063F4C0FCE679C36C7E93F377394AB");
+const processorAddr = getAddress("0x83BF6BD52A063F4C0FCE679C36C7E93F377394AB");
 const withdrawal = {
-    processooor: getAddress("0x83BF6BD52A063F4C0FCE679C36C7E93F377394AB"),
+    processooor: processorAddr,
     data: encodeData,
 };
 
@@ -28,4 +28,13 @@ console.log("scope:", scope);
 
 const context = calculateContext(withdrawal, scope);
 console.log("context: ", context);
+
+const encodeWithdrawData = encodeAbiParameters(
+    [
+        { name: "processooor", type: "address" },
+        { name: "data", type: "bytes" },
+    ],
+    [processorAddr, encodeData],
+);
+console.log("encodeWithdrawData: ", encodeWithdrawData);
 

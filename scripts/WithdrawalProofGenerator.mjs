@@ -55,6 +55,7 @@ async function main() {
     aspTreeDepth,
   ] = process.argv.slice(2);
 
+
   try {
     const circuits = new Circuits({ browser: false });
     const sdk = new PrivacyPoolSDK(circuits);
@@ -63,12 +64,12 @@ async function main() {
       [{ type: "uint256" }, { type: "uint256" }, { type: "uint256[]" }],
       stateMerkleProofHex,
     );
+    console.log(stateMerkleProof)
 
     const aspMerkleProof = decodeAbiParameters(
       [{ type: "uint256" }, { type: "uint256" }, { type: "uint256[]" }],
       aspMerkleProofHex,
     );
-
     const commitment = getCommitment(
       existingValue,
       label,
@@ -125,6 +126,8 @@ async function main() {
         publicSignals[7],
       ].map((x) => BigInt(x)),
     };
+
+    console.log(withdrawalProof);
 
     const encodedProof = encodeAbiParameters(
       [

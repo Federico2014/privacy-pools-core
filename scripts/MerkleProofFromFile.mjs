@@ -33,8 +33,9 @@ const csvData = fs.readFileSync(leavesFile, "utf8")
   .sort((a, b) => a.index - b.index);
 
 let leaves = csvData.map(record => record.leaf);
-leaves.push(leaf);
-
+// leaves.push(leaf);
+console.log(`Leaves: ${leaves.length}`);
+console.log(`Leaves: ${leaves}`);
 // Wrap the generateMerkleProof call with stdout redirection
 function withSilentStdout(fn) {
   const originalStdoutWrite = process.stdout.write;
@@ -65,6 +66,8 @@ async function main() {
 
     const proof = await silentGenerateProof();
     proof.index = Object.is(proof.index, NaN) ? 0 : proof.index;
+
+    console.log(proof);
 
     const encodedProof = encodeAbiParameters(
       [
